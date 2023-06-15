@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.dao.MoneybackDao">
+    <!-- 结果集 -->
+    <resultMap type="com.project.entity.Moneyback" id="MoneybackMap">
+        <result property="moneybackId" column="moneyback_id" />
+        <result property="studentId" column="student_id" />
+        <result property="moneybackTime" column="moneyback_time" />
+        <result property="moneybackState" column="moneyback_state" />
+        <result property="back01" column="back01" />
+        <result property="back02" column="back02" />
+        <result property="back03" column="back03" />
+        <result property="back04" column="back04" />
+        <result property="back05" column="back05" />
+    </resultMap>
+    
+    <!-- 基本字段 -->
+    <sql id="Base_Column_List">
+        moneyback_id, student_id, moneyback_time, moneyback_state, back01, back02, back03, back04, back05    </sql>
+    
+   
+</mapper>
