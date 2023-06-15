@@ -8,6 +8,7 @@ class ApplicationConfigTests {
 
     @Test
     void contextLoads() {
+        System.out.println("true = " );
     }
 
 }
