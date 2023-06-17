@@ -15,8 +15,8 @@
     </resultMap>
     
     <!-- 基本字段 -->
-    <sql id="Base_Column_List">
+   <!-- <sql id="Base_Column_List">
         id, username, password, power_id, back01, back02, back03, back04, back05    </sql>
-    
+    -->
    
 </mapper>
