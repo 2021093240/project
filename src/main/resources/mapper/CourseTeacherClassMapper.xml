@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="project.dao.CourseDao">
+<mapper namespace="project.dao.CourseTeacherClassDao">
     <!-- 结果集 -->
-    <resultMap type="project.entity.Course" id="CourseMap">
+    <resultMap type="project.entity.CourseTeacherClass" id="CourseTeacherClassMap">
+        <result property="id" column="id" />
+        <result property="teacherId" column="teacher_id" />
         <result property="courseId" column="course_id" />
-        <result property="courseName" column="course_name" />
-        <result property="courseMoney" column="course_money" />
+        <result property="classId" column="class_id" />
         <result property="back01" column="back01" />
         <result property="back02" column="back02" />
         <result property="back03" column="back03" />
@@ -15,7 +16,7 @@
     
     <!-- 基本字段 -->
     <sql id="Base_Column_List">
-        course_id, course_name, course_money, back01, back02, back03, back04, back05    </sql>
+        id, teacher_id, course_id, class_id, back01, back02, back03, back04, back05    </sql>
     
    
 </mapper>
