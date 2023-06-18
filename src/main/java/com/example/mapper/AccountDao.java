@@ -16,3 +16,4 @@ import java.util.Map;
 public interface AccountDao extends BaseMapper<Account>{
 
 }
+
