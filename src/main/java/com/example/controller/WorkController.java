@@ -4,10 +4,7 @@ import com.example.entity.Work;
 import com.example.service.WorkService;
 import com.example.utils.ResponseResult;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -35,11 +32,9 @@ public class WorkController {
         return ResponseResult.getResponseResult("查询工单列表成功",works);
 
     }
-    @GetMapping("/updateByIdWord")
+    @PutMapping ("/updateByIdWord")
     public ResponseResult<Void> updateByIdWord(Work work){
 
-        work.setId(work.getId());
-        work.setStates(work.getStates());
         workService.updateByIdWord(work);
 
         return ResponseResult.getResponseResult("状态修改成功");
@@ -47,7 +42,7 @@ public class WorkController {
     }
 
 
-    @GetMapping("/updateByIdWord2")
+    @PutMapping("/updateByIdWord2")
     public ResponseResult<Void> updateByIdWord2(Work work){
 
         workService.updateByIdWord2(work);

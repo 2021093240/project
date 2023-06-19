@@ -16,3 +16,4 @@ public interface WorkMapper {
     int updateByIdWord2(Work work);
 
 }
+

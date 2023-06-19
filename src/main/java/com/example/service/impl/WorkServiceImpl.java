@@ -54,11 +54,10 @@ public class WorkServiceImpl implements WorkService {
     @Override
     public int updateByIdWord(Work work) {
 
-        work.setId(work.getId());
-        work.setDetails("同意");
+        work.setStudentId(work.getStudentId());
+        work.setStates("同意");
 
         int i = workMapper.updateByIdWord(work);
-
 
         if (i !=1){
             throw  new UpdateException("状态产生未知的异常，请联系后端人员");
@@ -69,8 +68,8 @@ public class WorkServiceImpl implements WorkService {
 
     @Override
     public int updateByIdWord2(Work work) {
-        work.setId(work.getId());
-        work.setDetails("未同意");
+        work.setStudentId(work.getStudentId());
+        work.setStates("已拒绝");
 
         int i = workMapper.updateByIdWord2(work);
 

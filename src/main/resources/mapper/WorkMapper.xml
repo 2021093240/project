@@ -7,16 +7,16 @@
     <insert id="addWork" useGeneratedKeys="true" keyProperty="id">
 
         insert into
-            work (work_name, student_name, student_id, teacher_id, warn, type, details,time,states)
+            work (work_name, student_name, student_id, teacher_Name, warn, type, details,time,states)
         values
-            (#{workName}, #{studentName}, #{studentId}, #{teacherId}, #{warn}, #{type},
+            (#{workName}, #{studentName}, #{studentId}, #{teacherName}, #{warn}, #{type},
              #{details},#{time},#{states})
 
     </insert>
 
     <select id="queryWork" resultType="com.example.entity.Work">
 
-         select * from work
+        select * from work order by time desc
 
     </select>
 
@@ -24,14 +24,14 @@
     <update id="updateByIdWord">
 
         update work set states=#{states}
-        where id =#{id}
+        where student_id =#{studentId}
 
     </update>
 
     <update id="updateByIdWord2">
 
         update work set states=#{states}
-        where id =#{id}
+        where student_id =#{studentId}
 
     </update>
 

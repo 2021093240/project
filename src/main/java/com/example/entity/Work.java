@@ -17,8 +17,8 @@ public class Work implements Serializable {
     private String workName;
     private String studentName;
     private int studentId;
-    private int teacherId;
-    private String warn;
+    private String teacherName;
+    private boolean warn;
     private String type;
     private String details;
     private Date time;
