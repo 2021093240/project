@@ -10,11 +10,10 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Teacher_hhy implements Serializable {
-  private Integer teacherId;
-  private String teacherName;
-  private String education;
-  private String contactWay;
-  private List<Course_hhy> courses;
+public class Student_hhy implements Serializable {
+    private Integer stuId;
+    private String date;
+    private Integer status;
+    private List<Studentdetails_hhy> studentdetails;
 
 }

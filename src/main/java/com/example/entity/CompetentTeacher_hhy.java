@@ -11,7 +11,8 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CompetentTeacher_hhy implements Serializable {
-    private Integer id;
+    private Integer ctid;
     private String name;
     List<Teacher_hhy> teachers;
+
 }

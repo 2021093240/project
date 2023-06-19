@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.StudentDao_hhy">
+    <resultMap id="studentResultMapper" type="com.example.entity.Student_hhy">
+        <id column="stu_id" property="stuId"/>
+        <collection property="studentdetails" column="ctid"  select="com.example.mapper.StudentdetailsDao_hhy.findStudentdetailsByCtid" ofType="com.example.entity.Studentdetails_hhy"/>
+    </resultMap>
+    <select id="findStudentByCtid" resultMap="studentResultMapper">
+        select * from student where student.ctid=#{ctid}
+    </select>
+</mapper>

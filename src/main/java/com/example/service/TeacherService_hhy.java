@@ -2,7 +2,10 @@ package com.example.service;
 
 import com.example.entity.Teacher_hhy;
 
+import java.util.List;
+
 public interface TeacherService_hhy {
-    Teacher_hhy findTeacherByTeacherId(int teacherId);
+    List<Teacher_hhy> findTeacherByCtid(int ctid);
+
 
 }

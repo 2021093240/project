@@ -18,11 +18,13 @@ public class Tests {
     @Test
     public void findAllCompetentTeacher(){
         List<CompetentTeacher_hhy> allCompetentTeacher = ctdh.findAllCompetentTeacher();
-        System.out.println(allCompetentTeacher);
+        System.err.println(allCompetentTeacher);
     }
     @Test
     public void findTeacher(){
-        Teacher_hhy teacherByTeacherId = teacherDaoHhy.findTeacherByTeacherId(1);
+        List<Teacher_hhy> teacherByTeacherId = teacherDaoHhy.findTeacherByCtid(1);
         System.out.println(teacherByTeacherId);
     }
+
+
 }
