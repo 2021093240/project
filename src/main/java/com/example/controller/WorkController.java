@@ -19,6 +19,7 @@ public class WorkController {
     public ResponseResult<Void> addWork(Work work){
 
         workService.addWork(work);
+
         return ResponseResult.getResponseResult("提交工单成功");
 
     }

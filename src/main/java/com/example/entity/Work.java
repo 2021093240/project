@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 
 @Data
@@ -23,7 +24,8 @@ public class Work implements Serializable {
     private String details;
     private Date time;
     private String states;
-
+    private List<Studentdetails> studentdetails;
+    private List<Teacher> teachers;
 
 }
 
