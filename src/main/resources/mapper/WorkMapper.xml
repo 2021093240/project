@@ -7,13 +7,32 @@
     <insert id="addWork" useGeneratedKeys="true" keyProperty="id">
 
         insert into
-            work (work_name, student_name, student_id, teacher_id, state, type, details)
+            work (work_name, student_name, student_id, teacher_id, warn, type, details,time,states)
         values
-            (#{workName}, #{studentName}, #{studentId}, #{teacherId}, #{state}, #{type},
-             #{details})
-
+            (#{workName}, #{studentName}, #{studentId}, #{teacherId}, #{warn}, #{type},
+             #{details},#{time},#{states})
 
     </insert>
 
+    <select id="queryWork" resultType="com.example.entity.Work">
+
+         select * from work
+
+    </select>
+
+
+    <update id="updateByIdWord">
+
+        update work set states=#{states}
+        where id =#{id}
+
+    </update>
+
+    <update id="updateByIdWord2">
+
+        update work set states=#{states}
+        where id =#{id}
+
+    </update>
 
 </mapper>

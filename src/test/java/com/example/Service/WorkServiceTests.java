@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
+
 @SpringBootTest
 public class WorkServiceTests {
 
@@ -23,4 +25,16 @@ public class WorkServiceTests {
         workService.addWork(work);
 
     }
+
+    @Test
+    public void queryWork(){
+
+
+        List<Work> works = workService.queryWork();
+
+        for (Work work : works) {
+            System.out.println("work = " + work);
+        }
+    }
 }
+

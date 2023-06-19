@@ -8,6 +8,11 @@ import java.util.List;
 public interface WorkService {
 
 
-    void addWork(Work work);
+    int addWork(Work work);
+    List<Work> queryWork();
+    int updateByIdWord(Work work);
+    int updateByIdWord2(Work work);
+
 
 }
+

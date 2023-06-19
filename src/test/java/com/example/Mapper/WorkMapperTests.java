@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
+
 @SpringBootTest
 public class WorkMapperTests {
 
@@ -27,4 +29,15 @@ public class WorkMapperTests {
 
     }
 
+    @Test
+    public void queryWork(){
+
+
+        List<Work> works = workMapper.queryWork( );
+
+        for (Work work1 : works) {
+            System.out.println("work1 = " + work1);
+        }
+
+    }
 }

@@ -4,7 +4,6 @@ package com.example.service.ex;
 
 public class ServiceException extends RuntimeException{
 
-
     public ServiceException() {
         super();
     }

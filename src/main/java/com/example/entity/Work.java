@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.Date;
 
 
 @Data
@@ -12,15 +13,17 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class Work implements Serializable {
 
-
     private int id;
     private String workName;
     private String studentName;
     private int studentId;
     private int teacherId;
-    private int state;
+    private String warn;
     private String type;
     private String details;
+    private Date time;
+    private String states;
 
 
 }
+
