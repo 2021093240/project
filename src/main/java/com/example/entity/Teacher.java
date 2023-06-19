@@ -2,6 +2,10 @@ package com.example.entity;
 
 
 import java.io.Serializable;
+
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,9 +22,11 @@ import java.util.Date;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
+@TableName("teacher")
 public class Teacher implements Serializable {
     private static final long serialVersionUID = -19903459299411420L;
-    
+
+    @TableId(type = IdType.AUTO)
     private Integer teacherId;
     
     private String teacherName;

@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import com.example.entity.Teacher;
+
 import com.example.service.ITeacherService;
 import com.example.utils.ResponseResult;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,9 +23,10 @@ public class TeacherController {
     private ITeacherService iTeacherService;
 
     @RequestMapping("findAll")
-    public ResponseResult<List<Teacher>> findTeaAll(){
+    public ResponseResult<List<Teacher>> findTeaAll() {
         List<Teacher> all = iTeacherService.findAll();
-       return ResponseResult.getResponseResult(all);
+        return ResponseResult.getResponseResult(all);
     }
+
 }
 
