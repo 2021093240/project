@@ -18,8 +18,7 @@ import java.security.Timestamp;
 @AllArgsConstructor
 @NoArgsConstructor
 public class HistoryTable implements Serializable {
-    private static final long serialVersionUID = 467554315687235856L;
-    
+
     private Integer id;
     
     private Integer stuId;
