@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper">
+
+    <select id="addWork" resultType="com.example.entity.Work">
+
+        insert into
+            work (work_name, student_name, student_id, teacher_id, state, type, details)
+        values
+            (#{workName}, #{studentName}, #{studentId}, #{teacherId}, #{state}, #{type},
+             #{details})
+
+
+    </select>
+
+
+</mapper>
