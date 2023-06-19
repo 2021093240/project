@@ -1,22 +1,30 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.mapper.AccountDao">
-    <!-- 结果集 -->
-    <resultMap type="com.example.entity.Account" id="AccountMap">
-        <result property="id" column="id" />
-        <result property="username" column="username" />
-        <result property="password" column="password" />
-        <result property="powerId" column="power_id" />
-        <result property="back01" column="back01" />
-        <result property="back02" column="back02" />
-        <result property="back03" column="back03" />
-        <result property="back04" column="back04" />
-        <result property="back05" column="back05" />
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.mapper.AccountMapper">
+
+    <select id="findNavAll" resultMap="findByPid">
+
+        select * from nav where pid =0
+    </select>
+
+    <select id="findbyNavList" resultType="Nav">
+
+        select * from nav where pid = #{id}
+    </select>
+    <resultMap id="findByPid" type="Nav">
+
+        <id column="nid" property="nid"></id>
+
+        <collection property="navList" column="nid" select="findbyNavList" />
     </resultMap>
-    
-    <!-- 基本字段 -->
-   <!-- <sql id="Base_Column_List">
-        id, username, password, power_id, back01, back02, back03, back04, back05    </sql>
-    -->
-   
+
+    <select id="findNavListTeacher" resultMap="findByPid">
+
+        select n.* from teacher_nav_mid t , nav n where t.nid =  n.nid and t.tid =#{id}
+    </select>
+
+
 </mapper>

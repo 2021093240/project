@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.util.Date;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -14,12 +15,17 @@ import java.util.Date;
 public class StudentVO {
 
     private Integer stuId;
-    private String status;
+    private Date date;
+    private String datetime ;
     private String sdName;
     private Integer sdAge;
+    private Integer sdSex ;
+    private String sSex ;
     private String sdPhone;
     private String sdAddress;
-    private String sdHeadimg;
-    private Date createdTime;
+    private String sdHeadimg ;
+    private String status;
+    private String teacherName;
+    private List<StuParent> teachers ;
 
 }

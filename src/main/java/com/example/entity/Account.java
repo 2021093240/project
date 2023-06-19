@@ -1,6 +1,9 @@
 package com.example.entity;
 
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,6 +15,9 @@ import java.io.Serializable;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+
+import java.util.Date;
+import java.util.List;
 
 /**
  * (Account)实体类
@@ -36,4 +42,5 @@ public class Account extends BaseAccount implements Serializable{
     private String salt ;
     private Integer powerId;
 }
+
 
