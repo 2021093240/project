@@ -49,7 +49,6 @@ public class TeacherServiceImpl implements TeacherService {
         updateteacher.setContactWay(teacher.getContactWay());
         updateteacher.setEducation(teacher.getEducation());
 
-
         int i1 = teacherDao.updateById(updateteacher);
 
         if(i1<0){
