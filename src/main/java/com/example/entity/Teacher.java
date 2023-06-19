@@ -2,11 +2,16 @@ package com.example.entity;
 
 
 import java.io.Serializable;
+
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import java.security.Timestamp;
+import java.util.Date;
+
 /**
  * (Teacher)实体类
  *
@@ -26,11 +31,11 @@ public class Teacher implements Serializable {
     
     private String accountId;
     
-    private String back01;
+    private String education;
     
-    private String back02;
-    
-    private String back03;
+    private String contactWay;
+
+    private Date entryTime;
     
     private String back04;
     
