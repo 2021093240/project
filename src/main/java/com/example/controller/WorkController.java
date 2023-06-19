@@ -15,7 +15,6 @@ public class WorkController {
     @Autowired
     private WorkService workService;
 
-
     @PostMapping("/addWork")
     public ResponseResult<Void> addWork(Work work){
 
