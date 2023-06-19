@@ -1,6 +1,7 @@
 package com.example.service;
 
-import com.example.entity.Teacher;
+import com.example.entity.Employee;
+
 import java.util.List;
 import java.util.Map;
 
@@ -13,4 +14,7 @@ import java.util.Map;
  */
  
 public interface TeacherService {
+
+    void updateTeacher(Employee teacher,String username);
+
 }

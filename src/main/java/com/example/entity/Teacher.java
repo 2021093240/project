@@ -11,6 +11,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import java.security.Timestamp;
+import java.util.Date;
+
 /**
  * (Teacher)实体类
  *
@@ -27,18 +29,16 @@ public class Teacher implements Serializable {
 
     @TableId(type = IdType.AUTO)
     private Integer teacherId;
-    
+
     private String teacherName;
-    
+
     private String accountId;
-    
-    private String back01;
-    
-    private String back02;
-    
-    private String back03;
-    
-    private String back04;
-    
-    private String back05;
+
+    private String education;
+
+    private String contactWay;
+
+    private Date entryTime;
+
+    private int ctid;
 }

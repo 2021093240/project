@@ -2,6 +2,10 @@ package com.example.entity;
 
 
 import java.io.Serializable;
+
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,9 +21,11 @@ import java.security.Timestamp;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
+@TableName("student")
 public class Student implements Serializable {
     private static final long serialVersionUID = 130289937152141459L;
-    
+
+    @TableId(type = IdType.AUTO)
     private Integer stuId;
     
     private Integer courseId;
@@ -28,7 +34,7 @@ public class Student implements Serializable {
     
     private Integer accountId;
     
-    private String back01;
+    private Integer status;
     
     private String back02;
     

@@ -1,6 +1,8 @@
 package com.example.service;
 
 import com.example.entity.Student;
+import com.example.entity.StudentVO;
+
 import java.util.List;
 import java.util.Map;
 
@@ -13,4 +15,7 @@ import java.util.Map;
  */
  
 public interface StudentService {
+
+    List<StudentVO> selectStatus();
+
 }

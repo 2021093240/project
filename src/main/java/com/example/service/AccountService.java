@@ -1,5 +1,6 @@
 package com.example.service;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.example.entity.Account;
 import java.util.List;
 import java.util.Map;
@@ -13,4 +14,7 @@ import java.util.Map;
  */
  
 public interface AccountService {
+
+
+
 }
