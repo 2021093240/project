@@ -44,3 +44,6 @@ public class HistoryTable implements Serializable {
     
     private String back05;
 }
+
+
+
