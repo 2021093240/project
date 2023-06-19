@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.ClassManagement">
+
+    <resultMap id="classgl" type="com.example.entity.HistoryTable2">
+        <id column="stu_id" property="id"></id>
+        <result column="sd_name" property="stname"/>
+        <result column="old_class_id" property="clname"/>
+        <result column="new_class_id" property="addclname"/>
+        <result column="state" property="state"/>
+        <result column="proposer" property="ppname"/>
+        <result column="applyfor_time" property="sqtime"/>
+        <result column="agree_time" property="sptime"/>
+    </resultMap>
+
+
+    <select id="getClassAll" resultMap="classgl">
+        select e.stu_id,e.sd_name,e.class_name old_class_id,f.class_name new_class_id,e.state,e.proposer,
+               e.applyfor_time,e.agree_time
+            from (select c.stu_id,c.sd_name,d.class_name,c.new_class_id,c.state,
+                c.proposer,c.applyfor_time,c.agree_time
+            from (select a.stu_id,b.sd_name,a.old_class_id,a.new_class_id,
+                a.state,a.proposer,a.applyfor_time,a.agree_time
+            from history_table a join studentdetails b
+                    on a.stu_id=b.sd_id ) c
+                  join class_table d
+                      on c.old_class_id=d.class_id) e
+                  join class_table f
+                    on e.new_class_id=f.class_id;
+    </select>
+</mapper>

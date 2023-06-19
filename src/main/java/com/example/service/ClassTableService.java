@@ -1,6 +1,8 @@
 package com.example.service;
 
 import com.example.entity.ClassTable;
+import com.example.entity.HistoryTable2;
+
 import java.util.List;
 import java.util.Map;
 
@@ -13,4 +15,6 @@ import java.util.Map;
  */
  
 public interface ClassTableService {
+    List<ClassTable> getClassTableAll();
+    ClassTable getById(Integer id);
 }

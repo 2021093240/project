@@ -32,13 +32,12 @@ public class Teacher implements Serializable {
     
     private String accountId;
     
-    private String back01;
+    private String education;
     
-    private String back02;
+    private String contactWay;
     
-    private String back03;
+    private String entryTime;
     
-    private String back04;
-    
-    private String back05;
+    private String ctid;
+
 }

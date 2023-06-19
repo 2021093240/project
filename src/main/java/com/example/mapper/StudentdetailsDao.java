@@ -14,5 +14,4 @@ import java.util.Map;
  */
  
 public interface StudentdetailsDao extends BaseMapper<Studentdetails>{
-
 }

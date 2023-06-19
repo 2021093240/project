@@ -2,11 +2,18 @@ package com.example.entity;
 
 
 import java.io.Serializable;
+
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import java.security.Timestamp;
+import java.util.Date;
+
 /**
  * (HistoryTable)实体类
  *
@@ -17,9 +24,11 @@ import java.security.Timestamp;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
+@TableName("history_table")
 public class HistoryTable implements Serializable {
     private static final long serialVersionUID = 467554315687235856L;
-    
+
+    @TableId(type = IdType.AUTO)
     private Integer id;
     
     private Integer stuId;
@@ -30,11 +39,11 @@ public class HistoryTable implements Serializable {
     
     private Integer state;
     
-    private Timestamp changeTime;
+    private Date applyforTime;
     
-    private Timestamp agreeTime;
+    private Date agreeTime;
     
-    private String back01;
+    private Integer proposer;
     
     private String back02;
     

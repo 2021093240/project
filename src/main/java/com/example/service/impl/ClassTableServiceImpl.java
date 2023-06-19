@@ -6,6 +6,8 @@ import com.example.service.ClassTableService;
 
 import javax.annotation.Resource;
 import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -16,8 +18,19 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class ClassTableServiceImpl implements ClassTableService {
-     @Resource
+    @Autowired
     private ClassTableDao classTableDao;
 
-   
+
+    @Override
+    public List<ClassTable> getClassTableAll() {
+        return classTableDao.selectList(null);
+    }
+
+    @Override
+    public ClassTable getById(Integer id) {
+        ClassTable classTable = classTableDao.selectById(id);
+
+        return classTable;
+    }
 }

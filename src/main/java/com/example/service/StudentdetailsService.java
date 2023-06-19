@@ -1,8 +1,8 @@
 package com.example.service;
 
+import com.example.entity.HistoryTable;
 import com.example.entity.Studentdetails;
 import java.util.List;
-import java.util.Map;
 
 
 /**
@@ -13,4 +13,9 @@ import java.util.Map;
  */
  
 public interface StudentdetailsService {
+    List<Studentdetails> getStudentAll();
+    List<Studentdetails> getStudentLikeId(Integer id);
+    Studentdetails getStudentById(Integer id);
+
+
 }

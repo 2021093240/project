@@ -13,4 +13,5 @@ import java.util.Map;
  */
  
 public interface TeacherService {
+    List<Teacher> getTeacherAll(Integer id);
 }

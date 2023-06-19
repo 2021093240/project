@@ -6,6 +6,8 @@ import com.example.service.HistoryTableService;
 
 import javax.annotation.Resource;
 import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -16,8 +18,11 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class HistoryTableServiceImpl implements HistoryTableService {
-     @Resource
+    @Autowired
     private HistoryTableDao historyTableDao;
 
-   
+    @Override
+    public int setHistoryTable(HistoryTable historyTable) {
+        return historyTableDao.insert(historyTable);
+    }
 }
