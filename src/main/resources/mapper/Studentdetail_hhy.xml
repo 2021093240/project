@@ -5,9 +5,15 @@
 <mapper namespace="com.example.mapper.StudentdetailsDao_hhy">
     <resultMap id="studentdetailsResultMapper" type="com.example.entity.Studentdetails_hhy">
         <id column="sd_id" property="sdId"/>
-<!--        <collection property="courses" column="ctid"  select="com.example.mapper.CourseDao_hhy.findCourseByCtid" ofType="com.example.entity.Course_hhy"/>-->
+        <!--        <collection property="courses" column="ctid"  select="com.example.mapper.CourseDao_hhy.findCourseByCtid" ofType="com.example.entity.Course_hhy"/>-->
     </resultMap>
     <select id="findStudentdetailsByCtid" resultMap="studentdetailsResultMapper">
-        select * from studentdetails where ctid=#{ctid}
+        <!--        select * from studentdetails where ctid=#{ctid}-->
+        select * from studentdetails,class_table where studentdetails.class_id=class_table.class_id and
+        studentdetails.ctid=#{ctid}
+    </select>
+    <select id="findStudentdetailsByStuId" resultMap="studentdetailsResultMapper">
+        select * from studentdetails,class_table,teacher where studentdetails.class_id=class_table.class_id and
+      teacher.ctid=studentdetails.ctid and  studentdetails.stu_id=#{stuId}
     </select>
 </mapper>

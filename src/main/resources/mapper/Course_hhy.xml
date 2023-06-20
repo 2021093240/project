@@ -5,7 +5,9 @@
 <mapper namespace="com.example.mapper.CourseDao_hhy">
     <resultMap id="courseResultMapper" type="com.example.entity.Course_hhy">
         <id column="course_id" property="courseId"/>
-        <collection property="students" column="ctid"  select="com.example.mapper.StudentDao_hhy.findStudentByCtid" ofType="com.example.entity.Student_hhy"/>
+<!--        <collection property="students" column="ctid"  select="com.example.mapper.StudentDao_hhy.findStudentByCtid" ofType="com.example.entity.Student_hhy"/>-->
+        <collection property="studentdetails" column="ctid"  select="com.example.mapper.StudentdetailsDao_hhy.findStudentdetailsByCtid" ofType="com.example.entity.Studentdetails_hhy"/>
+
     </resultMap>
     <select id="findCourseByCtid" resultMap="courseResultMapper">
        select * from course where ctid=#{ctid}

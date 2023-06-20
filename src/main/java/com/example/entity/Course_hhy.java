@@ -14,6 +14,7 @@ public class Course_hhy implements Serializable {
     private Integer courseId;
     private String courseName;
     private Integer courseMoney;
-    private List<Student_hhy> students;
-    private String percentage;
+//    private List<Student_hhy> students;
+private List<Studentdetails_hhy> studentdetails;
+
 }

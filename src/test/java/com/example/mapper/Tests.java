@@ -1,6 +1,7 @@
 package com.example.mapper;
 
 import com.example.entity.CompetentTeacher_hhy;
+import com.example.entity.Refund_hhy;
 import com.example.entity.Teacher_hhy;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,8 @@ public class Tests {
     private CompetentTeacherDao_hhy ctdh;
     @Autowired
     private TeacherDao_hhy teacherDaoHhy;
+    @Autowired
+    private RefundDao_hhy refundDaoHhy;
 
     @Test
     public void findAllCompetentTeacher(){
@@ -24,6 +27,11 @@ public class Tests {
     public void findTeacher(){
         List<Teacher_hhy> teacherByTeacherId = teacherDaoHhy.findTeacherByCtid(1);
         System.out.println(teacherByTeacherId);
+    }
+    @Test
+    public void findAllRefund(){
+        List<Refund_hhy> allRefund = refundDaoHhy.findAllRefund();
+        System.out.println("allRefund = " + allRefund);
     }
 
 

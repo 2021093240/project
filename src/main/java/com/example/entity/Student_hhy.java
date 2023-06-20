@@ -14,6 +14,7 @@ public class Student_hhy implements Serializable {
     private Integer stuId;
     private String date;
     private Integer status;
+    private String classTime;
     private List<Studentdetails_hhy> studentdetails;
 
 }

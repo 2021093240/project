@@ -5,7 +5,7 @@
 <mapper namespace="com.example.mapper.StudentDao_hhy">
     <resultMap id="studentResultMapper" type="com.example.entity.Student_hhy">
         <id column="stu_id" property="stuId"/>
-        <collection property="studentdetails" column="ctid"  select="com.example.mapper.StudentdetailsDao_hhy.findStudentdetailsByCtid" ofType="com.example.entity.Studentdetails_hhy"/>
+<!--        <collection property="studentdetails" column="ctid"  select="com.example.mapper.StudentdetailsDao_hhy.findStudentdetailsByCtid" ofType="com.example.entity.Studentdetails_hhy"/>-->
     </resultMap>
     <select id="findStudentByCtid" resultMap="studentResultMapper">
         select * from student where student.ctid=#{ctid}

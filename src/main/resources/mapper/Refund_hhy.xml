@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.RefundDao_hhy">
+    <resultMap id="refundResultMapper" type="com.example.entity.Refund_hhy">
+        <id column="id" property="id"/>
+        <collection property="students" column="stu_id"  select="com.example.mapper.StudentdetailsDao_hhy.findStudentdetailsByStuId" ofType="com.example.entity.Studentdetails_hhy"/>
+    </resultMap>
+    <select id="findAllRefund" resultMap="refundResultMapper">
+        select * from refund
+    </select>
+    <delete id="deleteRefundById">
+        delete  from refund where id=#{id}
+    </delete>
+    <select id="findRefundById" resultMap="refundResultMapper">
+        select * from refund where id=#{id}
+    </select>
+    <update id="updateRefund">
+        update refund set state=#{state},agree_time=#{agreeTime} where id=#{id}
+    </update>
+</mapper>

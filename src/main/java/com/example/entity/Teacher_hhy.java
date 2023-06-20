@@ -15,6 +15,6 @@ public class Teacher_hhy implements Serializable {
   private String teacherName;
   private String education;
   private String contactWay;
+  private String percentage;
   private List<Course_hhy> courses;
-
 }
