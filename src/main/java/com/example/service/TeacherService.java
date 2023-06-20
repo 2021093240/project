@@ -1,6 +1,7 @@
 package com.example.service;
 
 import com.example.entity.Employee;
+import com.example.entity.StudentVO;
 
 import java.util.List;
 import java.util.Map;
@@ -16,5 +17,8 @@ import java.util.Map;
 public interface TeacherService {
 
     void updateTeacher(Employee teacher,String username);
+
+    List<StudentVO> selectStatus();
+
 
 }

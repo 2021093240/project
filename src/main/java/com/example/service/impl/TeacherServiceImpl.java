@@ -1,10 +1,8 @@
 package com.example.service.impl;
 
-import com.example.entity.Account;
-import com.example.entity.Employee;
-import com.example.entity.Teacher;
-import com.example.entity.TeacherNavMid;
+import com.example.entity.*;
 import com.example.mapper.AccountDao;
+import com.example.mapper.StudentDao;
 import com.example.mapper.TeacherDao;
 import com.example.service.TeacherService;
 
@@ -31,6 +29,9 @@ public class TeacherServiceImpl implements TeacherService {
 
      @Autowired
      private AccountDao accountDao;
+
+     @Autowired
+     private StudentDao studentDao;
 
     @Override
     public void updateTeacher(Employee teacher,String username) {
@@ -122,6 +123,11 @@ public class TeacherServiceImpl implements TeacherService {
 
     }
 
+    @Override
+    public List<StudentVO> selectStatus() {
+        return studentDao.selectStatus();
+    }
+
     //加密密码
     public String getMd5Password(String salt,String password){
         for (int i = 0; i < 3; i++) {
@@ -129,5 +135,8 @@ public class TeacherServiceImpl implements TeacherService {
         }
         return password;
     }
+
+
+
 
 }
