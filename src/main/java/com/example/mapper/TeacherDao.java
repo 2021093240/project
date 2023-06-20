@@ -1,10 +1,9 @@
 package com.example.mapper;
 
 import com.example.entity.Teacher;
-import org.apache.ibatis.annotations.Param;
-import java.util.List;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import java.util.Map;
+
+import java.math.BigInteger;
 
 /**
  * (Teacher)表数据库访问层
@@ -14,7 +13,5 @@ import java.util.Map;
  */
  
 public interface TeacherDao extends BaseMapper<Teacher>{
-
-
-
+    BigInteger insertTeacherId();
 }

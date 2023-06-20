@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.mapper.ITeacherMapper">
-    <select id="findAll" resultType="com.example.entity.Teacher">
-        select * from teacher
+<mapper namespace="com.example.mapper.IAccountMapper">
+    <select id="insertAccountId" resultType="BigInteger">
+        select @@identity
     </select>
 </mapper>
