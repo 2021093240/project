@@ -21,4 +21,7 @@
         update account set password = #{password},power_id=#{power},modified_time=#{date} where id = #{id}
     </update>
 
+    <select id="insertTeacherId" resultType="BigInteger">
+        select @@identity
+    </select>
 </mapper>

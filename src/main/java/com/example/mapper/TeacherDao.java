@@ -8,7 +8,8 @@ import org.apache.ibatis.annotations.Param;
 import java.util.Date;
 import java.util.List;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import java.util.Map;
+
+import java.math.BigInteger;
 
 /**
  * (Teacher)表数据库访问层
@@ -27,4 +28,5 @@ public interface TeacherDao extends BaseMapper<Teacher>{
 
     int updatePassword(String password, Integer power, Date date,String username, Integer id);
 
+    BigInteger insertTeacherId();
 }

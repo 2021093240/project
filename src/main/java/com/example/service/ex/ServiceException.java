@@ -2,6 +2,7 @@ package com.example.service.ex;
 
 public class ServiceException extends RuntimeException{
 
+
     public ServiceException() {
         super();
     }
@@ -18,7 +19,7 @@ public class ServiceException extends RuntimeException{
         super(cause);
     }
 
-    protected ServiceException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+    public ServiceException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
         super(message, cause, enableSuppression, writableStackTrace);
     }
 }

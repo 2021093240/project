@@ -18,11 +18,10 @@ import java.security.Timestamp;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
+
 public class Applydetail implements Serializable {
     private static final long serialVersionUID = -25327280261228978L;
-    
-        private     Integer id;
-    
+    private   Integer id;
     private Integer detail;
     
     private Timestamp studyovertime;

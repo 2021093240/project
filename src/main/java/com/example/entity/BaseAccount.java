@@ -11,7 +11,6 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-
 public abstract class BaseAccount implements Serializable {
 
     private String createdUser;

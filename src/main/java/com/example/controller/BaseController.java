@@ -1,56 +1,39 @@
 package com.example.controller;
 
-import com.example.service.ex.ServiceException;
 import com.example.service.ex.*;
 import com.example.utils.ResponseResult;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import javax.servlet.http.HttpSession;
-
-/**
- * 控制层的父类
- * 完成统一异常处理
- */
+import javax.sql.rowset.serial.SerialException;
 
 public class BaseController {
 
-    //获取Session中的uid
-    protected final Integer getUidFromSession(HttpSession session){
 
-        return Integer.valueOf(session.getAttribute("uid").toString());
-
-    }
-
-    //获取session中的username
-    protected final String getUserNameFromSession(HttpSession session){
-
-        return session.getAttribute("username").toString();
-
-    }
-
-    /*
-        ExceptionHandler：监控当前类是否产生异常，并指定监控哪一种异常
-     */
-
+    //统一异常的处理
     @ExceptionHandler(ServiceException.class)
-    public ResponseResult<Void> handlerException(Throwable e){
+    public ResponseResult<Void> handleException(Throwable e){
 
-        ResponseResult<Void> responseResult = null;
+        ResponseResult<Void> responseResult = null ;
 
-        if(e instanceof TeacherNotFound){
-            responseResult = ResponseResult.getResponseResult(4090,"老师信息找不到");
-        }else if(e instanceof NavPointNotNull){
-            responseResult = ResponseResult.getResponseResult(4091,"权限不为空");
-        }else if(e instanceof InsertTeacherNavMidException){
-            responseResult = ResponseResult.getResponseResult(4092,"新增数据时服务器发生错误");
-        } else if (e instanceof UpdateTeacherException) {
-            responseResult = ResponseResult.getResponseResult(4093,"修改老师信息发生服务器错误");
-        } else if (e instanceof UserNotFountException) {
-            responseResult = ResponseResult.getResponseResult(4094,"用户找不到");
+        if(e instanceof UsernameDuplicateException){
+
+            responseResult = ResponseResult.getResponseResult(4000,"用户名被占用") ;
+        }else if(e instanceof UserNotFoundException){
+
+            responseResult = ResponseResult.getResponseResult(4001,"用户数据不存在");
+
+        }else if(e instanceof PasswordNotFoundException){
+
+            responseResult = ResponseResult.getResponseResult(4002 , "密码验证失败");
+        }else if(e instanceof InsertException){
+
+            responseResult = ResponseResult.getResponseResult(5000 , "插入数据产生未知异常");
+
+        }else if(e instanceof ListNotFoundException){
+
+            responseResult = ResponseResult.getResponseResult(5001 , "数据为空的异常");
         }
 
-        return responseResult;
-
+        return responseResult ;
     }
-
 }
