@@ -16,16 +16,16 @@ public class Work implements Serializable {
 
     private int id;
     private String workName;
-    private String studentName;
-    private int studentId;
-    private String teacherName;
+    private String sdName;
+    private int stuId;
     private boolean warn;
     private String type;
     private String details;
     private Date time;
     private String states;
-    private List<Studentdetails> studentdetails;
-    private List<Teacher> teachers;
+    private int ctid;
+    private String teacherName;
+    private int sdId;
 
 }
 

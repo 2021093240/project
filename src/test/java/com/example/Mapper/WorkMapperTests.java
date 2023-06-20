@@ -1,6 +1,7 @@
 package com.example.Mapper;
 
 import com.example.entity.Work;
+import com.example.entity.WorkVO;
 import com.example.mapper.WorkMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,5 +40,13 @@ public class WorkMapperTests {
             System.out.println("work1 = " + work1);
         }
 
+    }
+
+    @Test
+    public void findByWorkAll(){
+
+        List<WorkVO> byWorkAll = workMapper.findByWorkAll();
+
+        byWorkAll.forEach(System.out::println);
     }
 }

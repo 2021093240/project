@@ -4,11 +4,15 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.mapper.WorkMapper">
 
-    <select id="queryWork" resultType="com.example.entity.Work">
 
-        select * from work order by time desc
+    <select id="findByWorkAll" resultType="com.example.entity.WorkVO">
+
 
     </select>
 
-</mapper>
+<!--    select *
+    from shop
+    where tid = 1
+    and sname like concat('%', #{sname}, '%')-->
 
+</mapper>

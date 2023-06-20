@@ -12,16 +12,19 @@
     <insert id="addWork" useGeneratedKeys="true" keyProperty="id">
 
         insert into
-            work (work_name, student_name, student_id, teacher_Name, warn, type, details,time,states)
+            work (work_name, sd_name, stu_id, teacher_Name, warn, type, details,time,states)
         values
-            (#{workName}, #{studentName}, #{studentId}, #{teacherName}, #{warn}, #{type},
+            (#{workName}, #{sdName}, #{stuId}, #{teacherName}, #{warn}, #{type},
              #{details},#{time},#{states})
 
     </insert>
 
-    <select id="queryWork" resultType="com.example.entity.Work">
+    <select id="findByWorkAll" resultType="com.example.entity.WorkVO">
 
-        select * from work order by time desc
+        select w.time,w.work_name,st.sd_name ,st.sd_id,t.teacher_name
+             ,w.warn  ,w.states,w.type from work w , student s ,
+            studentdetails st , teacher t  where w.stu_id = s.stu_id and w.stu_id = st.stu_id and s.stu_id = st.stu_id
+             and s.tid = t.teacher_id order by w.time desc;
 
     </select>
 
@@ -29,18 +32,20 @@
     <update id="updateByIdWord">
 
         update work set states=#{states}
-        where student_id =#{studentId}
+        where stu_id =#{stuId}
 
     </update>
 
     <update id="updateByIdWord2">
 
         update work set states=#{states}
-        where student_id =#{studentId}
+        where stu_id =#{stuId}
+        select * from studentdetails where sd_name="吕超";
 
     </update>
-
-
-
+<!--    select *
+    from shop
+    where tid = 1
+    and sname like concat('%', #{sname}, '%')-->
 
 </mapper>

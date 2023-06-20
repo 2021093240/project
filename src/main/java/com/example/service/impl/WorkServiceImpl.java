@@ -1,6 +1,7 @@
 package com.example.service.impl;
 
 import com.example.entity.Work;
+import com.example.entity.WorkVO;
 import com.example.mapper.WorkMapper;
 import com.example.service.WorkService;
 import com.example.service.ex.InsertException;
@@ -54,7 +55,7 @@ public class WorkServiceImpl implements WorkService {
     @Override
     public int updateByIdWord(Work work) {
 
-        work.setStudentId(work.getStudentId());
+        work.setStuId(work.getStuId());
         work.setStates("同意");
 
         int i = workMapper.updateByIdWord(work);
@@ -63,12 +64,11 @@ public class WorkServiceImpl implements WorkService {
             throw  new UpdateException("状态产生未知的异常，请联系后端人员");
         }
         return i;
-
     }
 
     @Override
     public int updateByIdWord2(Work work) {
-        work.setStudentId(work.getStudentId());
+        work.setStuId(work.getStuId());
         work.setStates("已拒绝");
 
         int i = workMapper.updateByIdWord2(work);
@@ -77,5 +77,17 @@ public class WorkServiceImpl implements WorkService {
             throw  new UpdateException("状态产生未知的异常，请联系后端人员");
         }
         return i;
+    }
+
+    @Override
+    public List<WorkVO> findByWorkAll() {
+        List<WorkVO> byWorkAll = workMapper.findByWorkAll();
+
+        if (byWorkAll == null){
+
+            throw new QueryException("查询数据时，产生未知的异常，请联系后端人员");
+
+        }
+        return byWorkAll;
     }
 }

@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import com.example.entity.Work;
+import com.example.entity.WorkVO;
 import com.example.service.WorkService;
 import com.example.utils.ResponseResult;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,16 @@ public class WorkController {
         return ResponseResult.getResponseResult("查询工单列表成功",works);
 
     }
+    @GetMapping("/findByWorkAll")
+    public ResponseResult<List<WorkVO>> findByWorkAll(){
+
+        List<WorkVO> byWorkAll = workService.findByWorkAll();
+
+        return ResponseResult.getResponseResult("查询工单列表成功",byWorkAll);
+
+    }
+
+
     @PutMapping ("/updateByIdWord")
     public ResponseResult<Void> updateByIdWord(Work work){
 

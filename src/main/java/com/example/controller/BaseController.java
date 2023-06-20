@@ -28,7 +28,7 @@ public class BaseController {
         if (e instanceof InsertException){
             responseResult = ResponseResult.getResponseResult(1000,"插入数据产生未知的异常");
         }else if (e instanceof QueryException){
-            responseResult = ResponseResult.getResponseResult(1001,"插入数据产生未知的异常");
+            responseResult = ResponseResult.getResponseResult(1001,"查询数据产生未知的异常");
         }
         return responseResult;
     }
