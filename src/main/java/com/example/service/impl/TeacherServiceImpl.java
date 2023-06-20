@@ -4,19 +4,19 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.entity.Account;
 import com.example.entity.Teacher;
 import com.example.entity.Teacher_nav_mid;
-import com.example.mapper.IAccountMapper;
+import com.example.mapper.*;
 import com.example.entity.*;
-import com.example.mapper.AccountDao;
-import com.example.mapper.StudentDao;
-import com.example.mapper.TeacherDao;
-import com.example.mapper.Teacher_nav_midMapper;
+import com.example.mapper.AccountMapper;
 import com.example.service.TeacherService;
 import com.example.service.ex.DeleteException;
 import com.example.service.ex.InsertException;
+import com.example.service.ex.TeacherNotFound;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
+import com.example.service.ex.*;
 
+import javax.annotation.Resource;
 import java.math.BigInteger;
 import java.util.Date;
 import java.util.List;
@@ -28,7 +28,7 @@ public class TeacherServiceImpl implements TeacherService {
     private TeacherDao teacherDao;
 
      @Autowired
-     private AccountDao accountDao;
+     private AccountMapper accountDao;
 
      @Autowired
      private StudentDao studentDao;

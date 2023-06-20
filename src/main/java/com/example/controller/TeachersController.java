@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -26,6 +27,9 @@ import java.util.List;
 public class TeachersController {
     @Autowired
     private TeacherService iTeacherService;
+    @Autowired
+    private TeacherService teacherService;
+
     @RequestMapping("findAll")
     public ResponseResult<List<Teacher>> findTeaAll() {
         List<Teacher> all = iTeacherService.findAll();
@@ -65,4 +69,18 @@ public class TeachersController {
         List<Teacher> teachers = iTeacherService.findlikeName(name);
         return ResponseResult.getResponseResult(teachers);
     }
+
+    @RequestMapping("update_power")
+    public ResponseResult<Void> updatePower(Employee employee, HttpSession session){
+
+        System.out.println(employee);
+
+        String username = (String) session.getAttribute("username");
+
+        teacherService.updateTeacher(employee,username);
+
+        return ResponseResult.getResponseResult("修改成功");
+
+    }
+
 }
