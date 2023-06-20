@@ -21,7 +21,7 @@
 
     <select id="findByWorkAll" resultType="com.example.entity.WorkVO">
 
-        select w.time,w.work_name,st.sd_name ,st.sd_id,t.teacher_name
+        select w.id,w.time,w.work_name,st.sd_name ,st.sd_id,t.teacher_name
              ,w.warn  ,w.states,w.type from work w , student s ,
             studentdetails st , teacher t  where w.stu_id = s.stu_id and w.stu_id = st.stu_id and s.stu_id = st.stu_id
              and s.tid = t.teacher_id order by w.time desc;
@@ -32,20 +32,22 @@
     <update id="updateByIdWord">
 
         update work set states=#{states}
-        where stu_id =#{stuId}
+        where id =#{id}
 
     </update>
 
     <update id="updateByIdWord2">
 
         update work set states=#{states}
-        where stu_id =#{stuId}
-        select * from studentdetails where sd_name="吕超";
+        where id =#{id}
 
     </update>
-<!--    select *
-    from shop
-    where tid = 1
-    and sname like concat('%', #{sname}, '%')-->
+
+    <select id="findByNameWork" resultType="com.example.entity.Work">
+
+            select * from work where sd_name=#{sdName}
+
+    </select>
+
 
 </mapper>

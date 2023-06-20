@@ -1,5 +1,6 @@
 package com.example.service.impl;
 
+import com.example.entity.Studentdetails;
 import com.example.entity.Work;
 import com.example.entity.WorkVO;
 import com.example.mapper.WorkMapper;
@@ -7,6 +8,8 @@ import com.example.service.WorkService;
 import com.example.service.ex.InsertException;
 import com.example.service.ex.QueryException;
 import com.example.service.ex.UpdateException;
+
+import com.example.service.ex.WorkByNameException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,8 +22,18 @@ public class WorkServiceImpl implements WorkService {
     @Autowired
     private WorkMapper workMapper;
 
+
     @Override
     public int addWork(Work work) {
+
+        String sdName = work.getSdName();
+
+        Work byNameWork = workMapper.findByNameWork(sdName);
+
+
+        if (byNameWork == null){
+            throw new WorkByNameException("没有该学生");
+        }
 
         Date date = new Date();
         work.setTime(date);
@@ -29,12 +42,9 @@ public class WorkServiceImpl implements WorkService {
         int i = workMapper.addWork(work);
 
         if (i != 1){
-
             throw new InsertException("添加数据时，产生未知的异常，请联系后端人员");
         }
-
         return i;
-
     }
 
     @Override
@@ -55,7 +65,7 @@ public class WorkServiceImpl implements WorkService {
     @Override
     public int updateByIdWord(Work work) {
 
-        work.setStuId(work.getStuId());
+        work.setId(work.getId());
         work.setStates("同意");
 
         int i = workMapper.updateByIdWord(work);
@@ -68,7 +78,7 @@ public class WorkServiceImpl implements WorkService {
 
     @Override
     public int updateByIdWord2(Work work) {
-        work.setStuId(work.getStuId());
+        work.setId(work.getId());
         work.setStates("已拒绝");
 
         int i = workMapper.updateByIdWord2(work);

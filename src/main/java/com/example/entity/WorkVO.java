@@ -13,6 +13,7 @@ import java.util.Date;
 
 public class WorkVO implements Serializable {
 
+    private int id;
     private Date time ;
     private String workName;
     private String sdName ;

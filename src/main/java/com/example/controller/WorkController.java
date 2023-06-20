@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/work")
-public class WorkController {
+public class WorkController extends BaseController{
 
     @Autowired
     private WorkService workService;

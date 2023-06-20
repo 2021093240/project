@@ -3,6 +3,7 @@ package com.example.controller;
 import com.example.service.ex.InsertException;
 import com.example.service.ex.QueryException;
 import com.example.service.ex.ServiceException;
+import com.example.service.ex.WorkByNameException;
 import com.example.utils.ResponseResult;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
@@ -29,6 +30,8 @@ public class BaseController {
             responseResult = ResponseResult.getResponseResult(1000,"插入数据产生未知的异常");
         }else if (e instanceof QueryException){
             responseResult = ResponseResult.getResponseResult(1001,"查询数据产生未知的异常");
+        }else if(e instanceof WorkByNameException){
+            responseResult = ResponseResult.getResponseResult(1002,"没有该学生");
         }
         return responseResult;
     }
