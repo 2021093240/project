@@ -11,6 +11,7 @@ import lombok.ToString;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * (Account)实体类
@@ -31,6 +32,9 @@ public class Account extends BaseAccount implements Serializable{
     private String password;
     private String salt ;
     private Integer powerId;
-
-
 }
+
+
+
+
+

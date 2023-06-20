@@ -1,8 +1,9 @@
 package com.example.service.ex;
 
-public class InsertException extends ServiceException{
+public class InsertException extends ServiceException {
+
+
     public InsertException() {
-        super();
     }
 
     public InsertException(String message) {
@@ -17,7 +18,7 @@ public class InsertException extends ServiceException{
         super(cause);
     }
 
-    protected InsertException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+    public InsertException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
         super(message, cause, enableSuppression, writableStackTrace);
     }
 }

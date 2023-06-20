@@ -11,10 +11,10 @@ import java.util.List;
 @NoArgsConstructor
 public class Employee {
     private Integer id;
-    private String name;//老师姓名
-    private String contactWay;//联系电话
-    private String password;//密码
-    private String education;//学历
-    private Integer power;//角色
-    private List<Integer> nav;//权限的数组
+    private String name;
+    private String contactWay;
+    private String password;
+    private String education;
+    private Integer power;
+    private List<Integer> nav;
 }

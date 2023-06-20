@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.mapper.StudentMapper">
+
+
+    <select id="findStudentAll" resultMap="findStudentVO">
+
+        select s.stu_id,s.date,s.status,sd.sd_name,sd.sd_age,sd.sd_phone,sd.sd_address,sd.sd_headimg,t.teacher_name from
+        student s , studentdetails sd , teacher t where s.stu_id = sd.stu_id and s.tid = t.teacher_id;
+    </select>
+
+    <select id="findByTeacher" resultType="StuParent">
+
+        select id,parent_name,relation,phonenum from stuparent where stu_id = #{stuId}
+    </select>
+    <resultMap id="findStudentVO" type="StudentVO">
+
+        <id column="stu_id" property="stuId"></id>
+
+        <collection property="teachers" column="stu_id" select="findByTeacher"/>
+
+<!--        <collection property="" column=""/>-->
+    </resultMap>
+</mapper>
