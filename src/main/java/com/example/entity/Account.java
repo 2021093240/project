@@ -10,12 +10,6 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.io.Serializable;
-
-
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
-
 import java.util.Date;
 import java.util.List;
 
@@ -29,12 +23,9 @@ import java.util.List;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-
 @TableName("account")
 public class Account extends BaseAccount implements Serializable{
-
     private static final long serialVersionUID = 739424062845103940L;
-
     @TableId(type = IdType.AUTO)
     private Integer id;
     private String username;
@@ -42,5 +33,8 @@ public class Account extends BaseAccount implements Serializable{
     private String salt ;
     private Integer powerId;
 }
+
+
+
 
 

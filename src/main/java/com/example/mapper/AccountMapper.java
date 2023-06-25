@@ -13,7 +13,7 @@ import java.util.List;
  * @author makejava
  * @since 2023-06-17 17:29:48
  */
- 
+
 public interface AccountMapper extends BaseMapper<Account>{
 
     List<Nav> findNavAll();
