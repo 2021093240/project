@@ -1,5 +1,9 @@
 package com.example.service.ex;
 
+public class InsertException extends ServiceException {
+
+
+    public InsertException() {
 
 //插入数据的异常
 
@@ -21,7 +25,7 @@ public class InsertException extends  ServiceException{
         super(cause);
     }
 
-    protected InsertException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+    public InsertException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
         super(message, cause, enableSuppression, writableStackTrace);
     }
 }
