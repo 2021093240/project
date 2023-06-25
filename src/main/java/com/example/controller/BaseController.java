@@ -4,10 +4,26 @@ import com.example.service.ex.*;
 import com.example.utils.ResponseResult;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import javax.servlet.http.HttpSession;
 import javax.sql.rowset.serial.SerialException;
 
 public class BaseController {
 
+
+    protected final Integer getAidFromAidSession(HttpSession session){
+
+        Integer aid = Integer.valueOf(session.getAttribute("aid").toString());
+
+        return aid ;
+    }
+
+    protected final String getUsernameFromSession(HttpSession session){
+
+
+        String username = session.getAttribute("username").toString();
+
+        return username ;
+    }
 
     //统一异常的处理
     @ExceptionHandler(ServiceException.class)
@@ -32,6 +48,16 @@ public class BaseController {
         }else if(e instanceof ListNotFoundException){
 
             responseResult = ResponseResult.getResponseResult(5001 , "数据为空的异常");
+        }else if(e instanceof DataNullException){
+
+            responseResult = ResponseResult.getResponseResult(5002 , "数据为空的异常");
+        }else if(e instanceof DeleteDataException){
+
+            responseResult = ResponseResult.getResponseResult(4003 , "删除数据异常");
+
+        }else if(e instanceof UpdateStudentException){
+
+            responseResult = ResponseResult.getResponseResult(4004 , "修改学生时的异常");
         }
 
         return responseResult ;

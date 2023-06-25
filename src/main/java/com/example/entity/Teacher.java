@@ -23,6 +23,7 @@ import java.util.Date;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
+
 @TableName("teacher")
 public class Teacher implements Serializable {
     private static final long serialVersionUID = -19903459299411420L;

@@ -27,7 +27,7 @@ public class AccountMapperTests {
     @Test
     public void findNavListTeacher(){
 
-        List<Nav> navListTeacher = accountMapper.findNavListTeacher(1);
+        List<Nav> navListTeacher = accountMapper.findNavListTeacher(2);
 
         navListTeacher.forEach(System.out::println);
     }

@@ -23,7 +23,9 @@
 
     <select id="findNavListTeacher" resultMap="findByPid">
 
-        select n.* from teacher_nav_mid t , nav n where t.nid =  n.nid and t.tid =#{id}
+        select * from nav where nid in (select nid from teacher_nav_mid where tid =
+
+        (select teacher_id from teacher where account_id = #{id}))
     </select>
 
 

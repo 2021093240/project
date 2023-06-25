@@ -8,8 +8,18 @@
 
     <select id="findStudentAll" resultMap="findStudentVO">
 
-        select s.stu_id,s.date,s.status,sd.sd_name,sd.sd_age,sd.sd_phone,sd.sd_address,sd.sd_headimg,t.teacher_name from
-        student s , studentdetails sd , teacher t where s.stu_id = sd.stu_id and s.tid = t.teacher_id;
+        select s.stu_id,s.date,s.status,sd.sd_name,sd.sd_age,c.class_name ,sd.sd_sex,sd.sd_phone,sd.sd_address,sd.sd_headimg,t.teacher_name from
+        student s , studentdetails sd , teacher t , class_table c where s.stu_id = sd.stu_id and s.tid = t.teacher_id and c.class_id=sd.class_id
+
+        limit #{param1} , #{param2}
+    </select>
+
+    <select id="findStuNameAll" resultMap="findStudentVO">
+
+        select s.stu_id,s.date,s.status,sd.sd_name,sd.sd_age,c.class_name ,sd.sd_sex,sd.sd_phone,sd.sd_address,sd.sd_headimg,t.teacher_name from
+        student s , studentdetails sd , teacher t , class_table c where s.stu_id = sd.stu_id and s.tid = t.teacher_id and c.class_id=sd.class_id
+
+        and sd.sd_name like #{sdName}
     </select>
     <select id="quert_detail" resultMap="findStudentVO">
 
@@ -34,12 +44,27 @@
         and s.status=0;
     </select>
 
-    <select id="findByTeacher" resultType="com.example.entity.StuParent">
+    <select id="findByTeacher" resultType="StuParent">
 
         select id,parent_name,relation,phonenum from stuparent where stu_id = #{stuId}
     </select>
 
-    <resultMap id="findStudentVO" type="com.example.entity.StudentVO">
+    <select id="findByTeacherOne" resultType="Teacher">
+
+        select * from teacher where teacher_name = #{teacherName}
+    </select>
+
+    <select id="lastInsert" resultType="BigInteger">
+
+        select @@identity
+    </select>
+
+    <select id="findByStudentOne" resultType="Studentdetails">
+
+        select * from studentdetails where sd_name = #{sdName}
+    </select>
+
+    <resultMap id="findStudentVO" type="StudentVO">
 
         <id column="stu_id" property="stuId"></id>
 
@@ -47,4 +72,88 @@
 
 <!--        <collection property="" column=""/>-->
     </resultMap>
+
+
+    <select id="findAllStudent" resultType="Integer">
+
+        select count(1) from
+        student s , studentdetails sd , teacher t , class_table c where s.stu_id = sd.stu_id and s.tid = t.teacher_id and c.class_id=sd.class_id
+    </select>
+
+    <select id="updateByAllOne" resultMap="findStudentVO">
+        select s.stu_id,s.date,s.status,sd.sd_name,sd.sd_age,c.class_name ,sd.sd_sex,sd.sd_phone,sd.sd_address,sd.sd_headimg,t.teacher_name from
+        student s , studentdetails sd , teacher t , class_table c where s.stu_id = sd.stu_id and s.tid = t.teacher_id and c.class_id=sd.class_id
+        and s.stu_id = #{stuId}
+    </select>
+
+    <select id="findByClassTable" resultType="ClassTable">
+
+        select * from class_table where class_name = #{className}
+    </select>
+
+    <select id="findByClassNameAll" resultType="ClassTable">
+        select * from class_table
+    </select>
+    <insert id="insertStudent">
+
+        insert into student (date,account_id,tid,status) values
+
+        (#{date}, 0 , #{tid},0)
+    </insert>
+
+    <insert id="insertStudentDetails">
+
+        insert into studentdetails (sd_name,sd_sex,sd_age,sd_address,sd_phone,sd_headimg,stu_id , class_id)
+
+        values(#{sdName},#{sdSex},#{sdAge},#{sdAddress},#{sdPhone},#{sdHeadimg},#{stuId},#{classId})
+    </insert>
+
+    <insert id="insertTeacher">
+
+        insert into teacher (teacher_name,education,contact_way , entry_time)
+
+        values (#{teacherName},#{education},#{contactWay},#{entryTime})
+    </insert>
+
+    <insert id="insertStuParent">
+        insert into stuparent (stu_id,parent_name,relation,phonenum)
+        values(#{stuId},#{parentName} , #{relation} ,#{phonenum})
+    </insert>
+
+    <insert id="insertClass">
+
+        insert into class_table (class_name,create_time) values (#{className},#{createTime})
+    </insert>
+
+    <delete id="delteStudent">
+
+        delete from student where stu_id = #{stuId}
+    </delete>
+
+    <delete id="deleteStudentDetails">
+        delete from studentdetails where stu_id = #{stuId}
+    </delete>
+
+    <delete id="deleteStuParent">
+
+        delete from stuparent where stu_id = #{stuId}
+    </delete>
+
+    <update id="updateStudent">
+
+        update student set date=#{date},course_id=#{courseId},tid=#{tid},status=#{status} where stu_id = #{stuId}
+    </update>
+
+    <update id="updateStudentDetails">
+
+        update studentdetails set sd_name=#{sdName},sd_sex=#{sdSex},sd_age=#{sdAge},sd_address=#{sdAddress},sd_phone=#{sdPhone},
+
+        sd_headimg=#{sdHeadimg},class_id=#{classId} where stu_id = #{stuId}
+    </update>
+
+    <update id="updateStuparent">
+        update stuparent set parent_name=#{parentName},relation=#{relation},phonenum=#{phonenum}
+
+        where id = #{id}
+    </update>
 </mapper>

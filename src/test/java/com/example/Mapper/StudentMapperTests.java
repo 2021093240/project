@@ -16,8 +16,22 @@ public class StudentMapperTests {
     @Test
     public void findStudentAll(){
 
-        List<StudentVO> studentAll = studentMapper.findStudentAll();
+        List<StudentVO> studentAll = studentMapper.findStudentAll(1,3);
 
         studentAll.forEach(System.out::println);
+    }
+
+    @Test
+    public void findStudentAll2(){
+
+        Integer allStudent = studentMapper.findAllStudent();
+
+        System.err.println("allStudent = " + allStudent);
+    }
+
+    @Test
+    public void SessionTests(){
+
+
     }
 }

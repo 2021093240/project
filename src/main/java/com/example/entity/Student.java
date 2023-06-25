@@ -21,27 +21,30 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
+
 @TableName("student")
 public class Student implements Serializable {
     private static final long serialVersionUID = 895108490730300900L;
+
     @TableId(type = IdType.AUTO)
     private Integer stuId;
     
     private Integer ctid;
-    
+
     private Date date;
-    
+
     private Integer courseId;
-    
+
     private Integer accountId;
-    
-    private String tid;
-    
+
+    private Integer tid;
+
     private Integer status;
-    
+
     private String back04;
     
     private String back05;
+
 
 
 

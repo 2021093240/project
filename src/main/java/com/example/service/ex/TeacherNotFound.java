@@ -1,9 +1,9 @@
 package com.example.service.ex;
 
-public class TeacherNotFound extends ServiceException {
+public class TeacherNotFound extends ServiceException{
+
 
     public TeacherNotFound() {
-        super();
     }
 
     public TeacherNotFound(String message) {
@@ -18,7 +18,7 @@ public class TeacherNotFound extends ServiceException {
         super(cause);
     }
 
-    protected TeacherNotFound(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+    public TeacherNotFound(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
         super(message, cause, enableSuppression, writableStackTrace);
     }
 }

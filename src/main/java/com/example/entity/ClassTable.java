@@ -11,6 +11,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import java.security.Timestamp;
+import java.util.Date;
+
 /**
  * (ClassTable)实体类
  *
@@ -30,7 +32,7 @@ public class ClassTable implements Serializable {
     
     private String className;
     
-    private Timestamp createTime;
+    private Date createTime;
     
     private String back01;
     

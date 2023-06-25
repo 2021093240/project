@@ -12,10 +12,13 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+
 public class StudentVO {
 
     private Integer stuId;
     private Integer classId ;
+    private Integer courseId ;
+    private Integer tid ;
     private Date date;
     private String datetime ;
     private String sdName;
@@ -29,6 +32,11 @@ public class StudentVO {
     private Integer status;
     private String teacherId ;
     private String teacherName;
+
+    private Integer id ;
+    private String parentName ;
+    private String relation ;
+    private String phonenum;
     private List<StuParent> relationship ;
 
 }

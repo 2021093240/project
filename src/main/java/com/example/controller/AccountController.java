@@ -42,6 +42,13 @@ public class AccountController extends BaseController{
 
         Map<String , Object> objectMap = new HashMap<>();
         Account login = accountService.login(username, password);
+
+        System.out.println("login = " + login);
+
+
+        session.setAttribute("aid",login.getId());
+        session.setAttribute("username" , login.getUsername());
+
         ResponseResult<Account> result = ResponseResult.getResponseResult("登录成功",login);
 
         List<Nav> navAll = null ;
@@ -54,6 +61,9 @@ public class AccountController extends BaseController{
 
 
         String token = JwtUtil.createToken(username,login.getPowerId());
+
+        System.err.println("token = " + token);
+
         objectMap.put("data",result);
         objectMap.put("token" , token);
         objectMap.put("checkedkeys",navAll);
