@@ -1,6 +1,6 @@
 package com.example.controller;
 
-import com.example.service.ClassTableService;
+import com.example.service.ClassTableServiceHw;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,7 +17,7 @@ import javax.annotation.Resource;
 public class ClassTableController {
   
     @Resource
-    private ClassTableService classTableService;
+    private ClassTableServiceHw classTableService;
 
    
 }

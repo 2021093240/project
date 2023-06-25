@@ -1,10 +1,9 @@
 package com.example.service.impl;
 
 import com.example.entity.ClassTable;
-import com.example.mapper.ClassTableDao;
-import com.example.service.ClassTableService;
+import com.example.mapper.ClassTableDaoHw;
+import com.example.service.ClassTableServiceHw;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +16,9 @@ import org.springframework.stereotype.Service;
  * @since 2023-06-17 17:32:20
  */
 @Service
-public class ClassTableServiceImpl implements ClassTableService {
+public class ClassTableServiceImplHw implements ClassTableServiceHw {
     @Autowired
-    private ClassTableDao classTableDao;
+    private ClassTableDaoHw classTableDao;
 
 
     @Override
@@ -29,6 +28,7 @@ public class ClassTableServiceImpl implements ClassTableService {
 
     @Override
     public ClassTable getById(Integer id) {
+
         ClassTable classTable = classTableDao.selectById(id);
 
         return classTable;

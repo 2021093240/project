@@ -9,13 +9,14 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class HistoryTable2 {
+public class HistoryTableHw2 {
     private Integer id;
+    private Integer stid;
     private String stname;
-    private String clname;
-    private String addclname;
+    private String yclsname;
+    private String zrclsname;
+    private String proname;
+    private String sqtime;
     private Integer state;
-    private String ppname;
-    private Date sqtime;
-    private Date sptime;
+    private String sptime;
 }

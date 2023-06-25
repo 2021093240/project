@@ -10,7 +10,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import java.security.Timestamp;
+
 /**
  * (Teacher)实体类
  *
@@ -22,7 +22,7 @@ import java.security.Timestamp;
 @AllArgsConstructor
 @NoArgsConstructor
 @TableName("teacher")
-public class Teacher implements Serializable {
+public class TeacherHw implements Serializable {
     private static final long serialVersionUID = -19903459299411420L;
 
     @TableId(type = IdType.AUTO)

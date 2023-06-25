@@ -1,7 +1,6 @@
 package com.example.controller;
 
-import com.example.entity.Teacher;
-import com.example.service.TeacherService;
+import com.example.service.TeacherServiceHw;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,10 +14,10 @@ import javax.annotation.Resource;
  */
 @RestController
 @RequestMapping("teacher")
-public class TeacherController {
+public class TeacherControllerHw {
   
     @Resource
-    private TeacherService teacherService;
+    private TeacherServiceHw teacherService;
 
    
 }

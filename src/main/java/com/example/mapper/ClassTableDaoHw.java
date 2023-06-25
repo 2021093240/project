@@ -10,6 +10,6 @@ import com.example.entity.ClassTable;
  * @since 2023-06-17 17:29:48
  */
  
-public interface ClassTableDao extends BaseMapper<ClassTable>{
+public interface ClassTableDaoHw extends BaseMapper<ClassTable>{
 
 }

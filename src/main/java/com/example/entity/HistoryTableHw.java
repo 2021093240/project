@@ -4,14 +4,13 @@ package com.example.entity;
 import java.io.Serializable;
 
 import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import java.security.Timestamp;
+
 import java.util.Date;
 
 /**
@@ -25,7 +24,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @TableName("history_table")
-public class HistoryTable implements Serializable {
+public class HistoryTableHw implements Serializable {
     private static final long serialVersionUID = 467554315687235856L;
 
     @TableId(type = IdType.AUTO)

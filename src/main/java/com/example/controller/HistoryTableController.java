@@ -1,7 +1,6 @@
 package com.example.controller;
 
-import com.example.entity.HistoryTable;
-import com.example.service.HistoryTableService;
+import com.example.service.HistoryTableServiceHw;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,7 +17,7 @@ import javax.annotation.Resource;
 public class HistoryTableController {
   
     @Resource
-    private HistoryTableService historyTableService;
+    private HistoryTableServiceHw historyTableService;
 
    
 }
