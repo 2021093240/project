@@ -217,6 +217,18 @@ public class TeacherServiceImpl implements TeacherService {
     }
 
 
+    @Override
+    public List<Teacher> count_teacher() {
+        List<Teacher> teachers = teacherDao.selectList(null);
+        return teachers;
+    }
 
+    @Override
+    public List<Teacher> query_ctid(Integer ctid) {
+        QueryWrapper<Teacher> teacherQueryWrapper = new QueryWrapper<>();
+        teacherQueryWrapper.eq("ctid",ctid);
+        List<Teacher> teachers = teacherDao.selectList(teacherQueryWrapper);
+        return teachers;
+    }
 
 }

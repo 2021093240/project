@@ -11,16 +11,39 @@
         select s.stu_id,s.date,s.status,sd.sd_name,sd.sd_age,sd.sd_phone,sd.sd_address,sd.sd_headimg,t.teacher_name from
         student s , studentdetails sd , teacher t where s.stu_id = sd.stu_id and s.tid = t.teacher_id;
     </select>
+    <select id="quert_detail" resultMap="findStudentVO">
 
-    <select id="findByTeacher" resultType="StuParent">
+        select s.stu_id,s.date,s.status,sd.sd_name,sd.sd_age,c.class_name ,sd.sd_sex,sd.sd_phone,sd.sd_address,sd.sd_headimg,t.teacher_id,t.teacher_name from
+        student s , studentdetails sd , teacher t , class_table c where s.stu_id = sd.stu_id and s.tid = t.teacher_id and c.class_id=sd.class_id
+        and s.stu_id=#{id}
+    </select>
+
+
+    <select id="findStudentAll_like_name" resultMap="findStudentVO">
+
+        select s.stu_id,s.date,s.status,sd.sd_name,sd.sd_age ,sd.sd_sex,sd.sd_phone,sd.sd_address,sd.sd_headimg,t.teacher_id,t.teacher_name from
+        student s , studentdetails sd , teacher t  where s.stu_id = sd.stu_id and s.tid = t.teacher_id
+        and s.status=0
+        and sd.sd_name like #{name}
+    </select>
+
+    <select id="findStudentAll_not_pay" resultMap="findStudentVO">
+
+        select s.stu_id,s.date,s.status,sd.sd_name,sd.sd_age ,sd.sd_sex,sd.sd_phone,sd.sd_address,sd.sd_headimg,t.teacher_id,t.teacher_name from
+        student s , studentdetails sd , teacher t  where s.stu_id = sd.stu_id and s.tid = t.teacher_id
+        and s.status=0;
+    </select>
+
+    <select id="findByTeacher" resultType="com.example.entity.StuParent">
 
         select id,parent_name,relation,phonenum from stuparent where stu_id = #{stuId}
     </select>
-    <resultMap id="findStudentVO" type="StudentVO">
+
+    <resultMap id="findStudentVO" type="com.example.entity.StudentVO">
 
         <id column="stu_id" property="stuId"></id>
 
-        <collection property="teachers" column="stu_id" select="findByTeacher"/>
+        <collection property="relationship" column="stu_id" select="findByTeacher"/>
 
 <!--        <collection property="" column=""/>-->
     </resultMap>
