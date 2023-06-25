@@ -3,7 +3,6 @@ package com.example;
 import com.example.entity.*;
 import com.example.mapper.ClassManagementHw;
 import com.example.service.*;
-import com.example.utils.ResponseResult;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -78,9 +77,9 @@ public class HTtests {
 
     @Test
     public void aaaa() {
-        List<TeacherHw> teacherAll = teacherService.getTeacherAll(1);
+        List<Teacher> teacherAll = teacherService.getTeacherAll(1);
         List<Map<String, String>> list = new ArrayList<>();
-        for (TeacherHw s : teacherAll) {
+        for (Teacher s : teacherAll) {
             HashMap<String, String> map = new HashMap<>();
             map.put("teid", s.getTeacherId().toString());
             map.put("tename", s.getTeacherName());
@@ -148,11 +147,20 @@ public class HTtests {
             Integer classId = studentById.getClassId();
             map.put("clsid", classId.toString());
             ClassTable byId = classTableService.getById(classId);
+
             String className = byId.getClassName();
             map.put("clsname", className);
             list.add(map);
         }
-        System.out.println(list);
+        System.err.println(list);
+    }
+
+    @Test
+    public void test22(){
+
+        ClassTable byId = classTableService.getById(1);
+        System.err.println("byId = " + byId);
+
     }
 
     @Test
@@ -181,7 +189,7 @@ public class HTtests {
             h.setStname(studentById.getSdName());
             h.setYclsname(byId1.getClassName());
             h.setZrclsname(byId2.getClassName());
-            TeacherHw teacherByid = teacherService.getTeacherByid(s.getProposer());
+            Teacher teacherByid = teacherService.getTeacherByid(s.getProposer());
             if (teacherByid.equals("") || teacherByid==null){
                 continue;
             }else {
@@ -239,7 +247,7 @@ public class HTtests {
                 h.setStname(studentById.getSdName());
                 h.setYclsname(byId1.getClassName());
                 h.setZrclsname(byId2.getClassName());
-                TeacherHw teacherByid = teacherService.getTeacherByid(s.getProposer());
+                Teacher teacherByid = teacherService.getTeacherByid(s.getProposer());
                 System.out.println(teacherByid.getTeacherName());
                 h.setProname(teacherByid.getTeacherName());
                 Date date = new Date();
@@ -285,7 +293,7 @@ public class HTtests {
             h.setStname(studentById.getSdName());
             h.setYclsname(byId1.getClassName());
             h.setZrclsname(byId2.getClassName());
-            TeacherHw teacherByid = teacherService.getTeacherByid(s.getProposer());
+            Teacher teacherByid = teacherService.getTeacherByid(s.getProposer());
             if (teacherByid.equals("") || teacherByid == null) {
                 continue;
             } else {
@@ -332,7 +340,7 @@ public class HTtests {
             h.setStname(studentById.getSdName());
             h.setYclsname(byId1.getClassName());
             h.setZrclsname(byId2.getClassName());
-            TeacherHw teacherByid = teacherService.getTeacherByid(s.getProposer());
+            Teacher teacherByid = teacherService.getTeacherByid(s.getProposer());
             if (teacherByid.equals("") || teacherByid==null){
                 continue;
             }else {

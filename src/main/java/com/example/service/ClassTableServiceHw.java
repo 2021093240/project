@@ -11,7 +11,7 @@ import java.util.List;
  * @author makejava
  * @since 2023-06-17 17:32:20
  */
- 
+
 public interface ClassTableServiceHw {
 
     List<ClassTable> getClassTableAll();

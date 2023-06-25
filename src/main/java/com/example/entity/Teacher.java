@@ -10,7 +10,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import java.security.Timestamp;
+
 import java.util.Date;
 
 /**
@@ -24,7 +24,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @TableName("teacher")
-public class TeacherHw implements Serializable {
+public class Teacher implements Serializable {
     private static final long serialVersionUID = -19903459299411420L;
 
     @TableId(type = IdType.AUTO)
@@ -38,8 +38,7 @@ public class TeacherHw implements Serializable {
 
     private String contactWay;
 
-    private String entryTime;
+    private Date entryTime;
 
-    private String ctid;
-
+    private int ctid;
 }

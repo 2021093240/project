@@ -1,10 +1,7 @@
 package com.example.controller;
 
-import com.example.entity.Account;
-import com.example.entity.Employee;
-import com.example.entity.Teacher;
+import com.example.entity.*;
 
-import com.example.entity.Teacher_nav_mid;
 import com.example.service.TeacherService;
 import com.example.utils.ResponseResult;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,7 +49,7 @@ public class TeachersController {
         int aid = iTeacherService.insertAccountId();
         teacher.setTeacherName(employee.getName());
         teacher.setCtid(1);
-        teacher.setAccountId(aid);
+        teacher.setAccountId(String.valueOf(aid));
         teacher.setContactWay(employee.getContactWay());
         teacher.setEducation(employee.getEducation());
         iTeacherService.add(teacher);

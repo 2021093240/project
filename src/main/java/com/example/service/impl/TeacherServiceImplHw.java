@@ -1,8 +1,8 @@
 package com.example.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.example.entity.TeacherHw;
-import com.example.mapper.TeacherHwDao;
+import com.example.entity.Teacher;
+import com.example.mapper.TeacherDao;
 import com.example.service.TeacherServiceHw;
 
 import java.util.List;
@@ -19,17 +19,17 @@ import org.springframework.stereotype.Service;
 @Service
 public class TeacherServiceImplHw implements TeacherServiceHw {
      @Autowired
-    private TeacherHwDao teacherDao;
+    private TeacherDao teacherDao;
 
     @Override
-    public List<TeacherHw> getTeacherAll(Integer id) {
-        QueryWrapper<TeacherHw> qw = new QueryWrapper<>();
+    public List<Teacher> getTeacherAll(Integer id) {
+        QueryWrapper<Teacher> qw = new QueryWrapper<>();
         qw.like("teacher_id",id);
         return teacherDao.selectList(qw);
     }
 
     @Override
-    public TeacherHw getTeacherByid(Integer id) {
+    public Teacher getTeacherByid(Integer id) {
         return teacherDao.selectById(id);
     }
 }

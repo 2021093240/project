@@ -1,6 +1,6 @@
 package com.example.service;
 
-import com.example.entity.TeacherHw;
+import com.example.entity.Teacher;
 import java.util.List;
 
 
@@ -13,6 +13,6 @@ import java.util.List;
  
 public interface TeacherServiceHw {
 
-    List<TeacherHw> getTeacherAll(Integer id);
-    TeacherHw getTeacherByid(Integer id);
+    List<Teacher> getTeacherAll(Integer id);
+    Teacher getTeacherByid(Integer id);
 }

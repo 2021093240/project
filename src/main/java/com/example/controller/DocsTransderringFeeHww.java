@@ -86,7 +86,7 @@ public class DocsTransderringFeeHww {
             map.put("isNull","false");
             return new ResponseResult(400,"参数为空或者参数格式有误",map);
         }
-        List<TeacherHw> teacherAll = teacherService.getTeacherAll(Integer.parseInt(id));
+        List<Teacher> teacherAll = teacherService.getTeacherAll(Integer.parseInt(id));
         if (teacherAll.size()==0){
             Map map = new HashMap();
             map.put("isNull","false");
@@ -94,7 +94,7 @@ public class DocsTransderringFeeHww {
         }
         //判断id是否合规
         List<Map<String,String>> list = new ArrayList<>();
-        for (TeacherHw s : teacherAll){
+        for (Teacher s : teacherAll){
             HashMap<String, String> map = new HashMap<>();
             map.put("teid",s.getTeacherId().toString());
             map.put("tename",s.getTeacherName());
@@ -112,7 +112,7 @@ public class DocsTransderringFeeHww {
         if (stid == null || zrclsid == null || sqrid == null){
             return new ResponseResult(400,"参数有空值或者参数格式有误");
         }
-        TeacherHw teacherByid = teacherService.getTeacherByid(Integer.parseInt(zrclsid));
+        Teacher teacherByid = teacherService.getTeacherByid(Integer.parseInt(zrclsid));
         if (teacherByid == null){
             return new ResponseResult(400,"没有该老师");
         }
@@ -216,7 +216,7 @@ public class DocsTransderringFeeHww {
             h.setStname(studentById.getSdName());
             h.setYclsname(byId1.getClassName());
             h.setZrclsname(byId2.getClassName());
-            TeacherHw teacherByid = teacherService.getTeacherByid(s.getProposer());
+            Teacher teacherByid = teacherService.getTeacherByid(s.getProposer());
             if (teacherByid.equals("") || teacherByid==null){
                 continue;
             }else {
@@ -307,7 +307,7 @@ public class DocsTransderringFeeHww {
                 h.setStname(studentById.getSdName());
                 h.setYclsname(byId1.getClassName());
                 h.setZrclsname(byId2.getClassName());
-                TeacherHw teacherByid = teacherService.getTeacherByid(s.getProposer());
+                Teacher teacherByid = teacherService.getTeacherByid(s.getProposer());
                 if (teacherByid.equals("") || teacherByid==null){
                     continue;
                 }else {
