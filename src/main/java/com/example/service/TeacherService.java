@@ -25,4 +25,6 @@ public interface TeacherService {
     int insertAccountId();
     int insertTeacherId();
     List<Teacher> findlikeName(String name);
+
+    Teacher findById(int tid);
 }

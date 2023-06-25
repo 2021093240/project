@@ -100,6 +100,11 @@ public class TeacherServiceImpl implements TeacherService {
         return teachers;
     }
 
+    @Override
+    public Teacher findById(int tid) {
+        return mapper.selectById(tid);
+    }
+
     private String getMd5Password(String password,String salt){
         for (int i = 0; i < 3; i++) {
             password = DigestUtils.md5DigestAsHex((salt + password + salt).getBytes()).toUpperCase();

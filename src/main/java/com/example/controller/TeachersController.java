@@ -31,6 +31,15 @@ public class TeachersController {
         List<Teacher> all = iTeacherService.findAll();
         return ResponseResult.getResponseResult(all);
     }
+    @RequestMapping("findById/{tid}")
+    public ResponseResult<Teacher> findById(@PathVariable int tid){
+        Teacher byId = iTeacherService.findById(tid);
+        if (byId==null){
+            return ResponseResult.getResponseResult("查无此人");
+        }else {
+            return ResponseResult.getResponseResult(byId);
+        }
+    }
     @RequestMapping("del/{id}")
     public ResponseResult<Void> del(@PathVariable int id){
         iTeacherService.deleteTea(id);
@@ -43,7 +52,6 @@ public class TeachersController {
         account.setUsername(employee.getName());
         System.out.println(employee);
         account.setPassword(employee.getPassword());
-        account.setPowerId(employee.getPower());
         iTeacherService.insertAccount(account);
         int aid = iTeacherService.insertAccountId();
         teacher.setTeacherName(employee.getName());
