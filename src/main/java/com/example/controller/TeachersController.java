@@ -53,6 +53,7 @@ public class TeachersController {
         account.setUsername(employee.getName());
         System.out.println(employee);
         account.setPassword(employee.getPassword());
+        account.setPowerId(2);
         iTeacherService.insertAccount(account);
         int aid = iTeacherService.insertAccountId();
         teacher.setTeacherName(employee.getName());
