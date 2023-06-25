@@ -1,14 +1,6 @@
 package com.example.service.ex;
 
 public class InsertException extends ServiceException {
-
-
-    public InsertException() {
-
-//插入数据的异常
-
-public class InsertException extends  ServiceException{
-
     public InsertException() {
         super();
     }
