@@ -1,15 +1,13 @@
 package com.example.service.impl;
 
 import com.example.entity.Studentdetails;
+import com.example.entity.Teacher;
 import com.example.entity.Work;
 import com.example.entity.WorkVO;
 import com.example.mapper.WorkMapper;
 import com.example.service.WorkService;
-import com.example.service.ex.InsertException;
-import com.example.service.ex.QueryException;
-import com.example.service.ex.UpdateException;
+import com.example.service.ex.*;
 
-import com.example.service.ex.WorkByNameException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,14 +24,18 @@ public class WorkServiceImpl implements WorkService {
     @Override
     public int addWork(Work work) {
 
+
         String sdName = work.getSdName();
+        Studentdetails byNameWork = workMapper.findByNameWork(sdName);
 
-        Work byNameWork = workMapper.findByNameWork(sdName);
+        String teacherName = work.getTeacherName();
+        Teacher byNameTeacher = workMapper.findByNameTeacher(teacherName);
 
 
-        if (byNameWork == null){
-            throw new WorkByNameException("没有该学生");
+        if (byNameWork == null || byNameTeacher == null) {
+            throw new WorkByNameException("没有该学生或老师");
         }
+
 
         Date date = new Date();
         work.setTime(date);
@@ -41,7 +43,7 @@ public class WorkServiceImpl implements WorkService {
 
         int i = workMapper.addWork(work);
 
-        if (i != 1){
+        if (i != 1) {
             throw new InsertException("添加数据时，产生未知的异常，请联系后端人员");
         }
         return i;
@@ -51,13 +53,9 @@ public class WorkServiceImpl implements WorkService {
     public List<Work> queryWork() {
 
         List<Work> works = workMapper.queryWork();
-
-        if (works == null){
-
+        if (works == null) {
             throw new QueryException("查询数据时，产生未知的异常，请联系后端人员");
-
         }
-
         return works;
 
     }
@@ -70,8 +68,8 @@ public class WorkServiceImpl implements WorkService {
 
         int i = workMapper.updateByIdWord(work);
 
-        if (i !=1){
-            throw  new UpdateException("状态产生未知的异常，请联系后端人员");
+        if (i != 1) {
+            throw new UpdateException("状态产生未知的异常，请联系后端人员");
         }
         return i;
     }
@@ -83,21 +81,60 @@ public class WorkServiceImpl implements WorkService {
 
         int i = workMapper.updateByIdWord2(work);
 
-        if (i !=1){
-            throw  new UpdateException("状态产生未知的异常，请联系后端人员");
+        if (i != 1) {
+            throw new UpdateException("状态产生未知的异常，请联系后端人员");
         }
         return i;
     }
 
     @Override
     public List<WorkVO> findByWorkAll() {
+
         List<WorkVO> byWorkAll = workMapper.findByWorkAll();
 
-        if (byWorkAll == null){
-
+        if (byWorkAll == null) {
             throw new QueryException("查询数据时，产生未知的异常，请联系后端人员");
 
         }
         return byWorkAll;
     }
+
+    @Override
+    public List<Work> findStudentNameWork(String sdName) {
+
+        Studentdetails byNameWork = workMapper.findByNameWork(sdName);
+
+        if (byNameWork == null) {
+            throw new NameException("请输入正确的姓名");
+        }
+
+
+        List<Work> works = workMapper.findStudentNameWork(sdName);
+
+        if (works == null) {
+            throw new QueryException("查询数据时，产生未知的异常，请联系后端人员");
+        }
+        return works;
+
+
+    }
+
+    @Override
+    public List<Work> findTeacherNameWork(String teacherName) {
+
+
+        Teacher byNameTeacher = workMapper.findByNameTeacher(teacherName);
+        if (byNameTeacher == null) {
+            throw new NameException("请输入正确的姓名");
+        }
+
+        List<Work> works = workMapper.findTeacherNameWork(teacherName);
+
+        if (works == null) {
+            throw new QueryException("查询数据时，产生未知的异常，请联系后端人员");
+        }
+        return works;
+    }
+
+
 }

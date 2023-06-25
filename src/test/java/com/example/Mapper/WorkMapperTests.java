@@ -1,7 +1,9 @@
 package com.example.Mapper;
 
+import com.example.entity.RemindWork;
 import com.example.entity.Work;
 import com.example.entity.WorkVO;
+import com.example.mapper.RemindWorkMapper;
 import com.example.mapper.WorkMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,8 @@ public class WorkMapperTests {
     @Autowired
     private WorkMapper workMapper;
 
+    @Autowired
+    private RemindWorkMapper remindWorkMapper;
 
     @Test
     public void addWork(){
@@ -49,4 +53,20 @@ public class WorkMapperTests {
 
         byWorkAll.forEach(System.out::println);
     }
+
+    @Test
+    public void addRemindWork(){
+
+        RemindWork remindWork = new RemindWork();
+
+        remindWork.setRemind("545");
+        remindWork.setTId(4);
+        remindWork.setTeacherName("老师");
+        int i = remindWorkMapper.addRemindWork(remindWork);
+
+        System.out.println("i = " + i);
+
+
+    }
+
 }

@@ -1,9 +1,6 @@
 package com.example.controller;
 
-import com.example.service.ex.InsertException;
-import com.example.service.ex.QueryException;
-import com.example.service.ex.ServiceException;
-import com.example.service.ex.WorkByNameException;
+import com.example.service.ex.*;
 import com.example.utils.ResponseResult;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
@@ -31,7 +28,9 @@ public class BaseController {
         }else if (e instanceof QueryException){
             responseResult = ResponseResult.getResponseResult(1001,"查询数据产生未知的异常");
         }else if(e instanceof WorkByNameException){
-            responseResult = ResponseResult.getResponseResult(1002,"没有该学生");
+            responseResult = ResponseResult.getResponseResult(1002,"没有该学生或老师");
+        }else if(e instanceof NameException){
+            responseResult = ResponseResult.getResponseResult(1003,"请输入正确的姓名");
         }
         return responseResult;
     }

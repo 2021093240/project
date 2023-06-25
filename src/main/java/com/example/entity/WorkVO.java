@@ -22,5 +22,7 @@ public class WorkVO implements Serializable {
     private String warn ;
     private String type ;
     private String states;
+    private String details;
+    private int tId;
 
 }

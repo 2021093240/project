@@ -12,20 +12,24 @@
     <insert id="addWork" useGeneratedKeys="true" keyProperty="id">
 
         insert into
-            work (work_name, sd_name, stu_id, teacher_Name, warn, type, details,time,states)
+            work (work_name, sd_name, stu_id, teacher_Name, warn, type, details,time,states,t_id)
         values
             (#{workName}, #{sdName}, #{stuId}, #{teacherName}, #{warn}, #{type},
-             #{details},#{time},#{states})
+             #{details},#{time},#{states},#{tId})
 
     </insert>
 
     <select id="findByWorkAll" resultType="com.example.entity.WorkVO">
 
-        select w.id,w.time,w.work_name,st.sd_name ,st.sd_id,t.teacher_name
+/*        select w.id,w.time,w.work_name,st.sd_name ,st.sd_id,t.teacher_name
              ,w.warn  ,w.states,w.type from work w , student s ,
             studentdetails st , teacher t  where w.stu_id = s.stu_id and w.stu_id = st.stu_id and s.stu_id = st.stu_id
-             and s.tid = t.teacher_id order by w.time desc;
+             and s.tid = t.teacher_id order by w.time desc;*/
 
+        select w.id,w.time,w.work_name,w.sd_name,w.details ,st.sd_id,w.teacher_name
+             ,w.warn  ,w.states,w.type from work w , student s ,
+           studentdetails st , teacher t  where w.stu_id = s.stu_id and w.stu_id = st.stu_id and s.stu_id = st.stu_id
+          and s.tid = t.teacher_id order by w.time desc;
     </select>
 
 
@@ -43,11 +47,33 @@
 
     </update>
 
-    <select id="findByNameWork" resultType="com.example.entity.Work">
+    <select id="findByNameWork" resultType="com.example.entity.Studentdetails">
 
-            select * from work where sd_name=#{sdName}
+            select * from studentdetails where sd_name=#{sdName}
 
     </select>
 
+    <select id="findByNameTeacher" resultType="com.example.entity.Teacher">
 
+        select * from teacher where teacher_name=#{teacherName}
+
+    </select>
+
+    <!--    select *
+        from shop
+        where tid = 1
+        and sname like concat('%', #{sname}, '%')-->
+
+
+    <select id="findStudentNameWork" resultType="com.example.entity.Work">
+
+        select * from work where sd_name like concat('%', #{sdName}, '%')
+
+    </select>
+
+    <select id="findTeacherNameWork" resultType="com.example.entity.Work">
+
+        select * from work where teacher_name like concat('%', #{teacherName}, '%')
+
+    </select>
 </mapper>

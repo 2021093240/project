@@ -1,6 +1,7 @@
 package com.example.mapper;
 
 import com.example.entity.Studentdetails;
+import com.example.entity.Teacher;
 import com.example.entity.Work;
 import com.example.entity.WorkVO;
 
@@ -19,7 +20,9 @@ public interface WorkMapper {
 
     List<WorkVO> findByWorkAll();
 
-    Work findByNameWork(String sdName);
+    Studentdetails findByNameWork(String sdName);
+    Teacher findByNameTeacher(String teacherName);
 
+    List<Work> findStudentNameWork(String sdName);
+    List<Work> findTeacherNameWork(String teacherName);
 }
-

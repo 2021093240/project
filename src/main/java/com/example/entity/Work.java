@@ -26,6 +26,7 @@ public class Work implements Serializable {
     private int ctid;
     private String teacherName;
     private int sdId;
+    private int tId;
 
 }
 
