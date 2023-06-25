@@ -1,11 +1,7 @@
 package com.example.service;
 
-import com.example.entity.Account;
-import com.example.entity.Teacher;
-import com.example.entity.Teacher_nav_mid;
-import com.example.mapper.Teacher_nav_midMapper;
+import com.example.entity.*;
 
-import java.math.BigInteger;
 import java.util.List;
 
 
@@ -25,6 +21,14 @@ public interface TeacherService {
     int insertAccountId();
     int insertTeacherId();
     List<Teacher> findlikeName(String name);
+
+    void updateTeacher(Employee teacher,String username);
+
+    List<StudentVO> selectStatus();
+
+    List<Teacher> count_teacher();
+
+    List<Teacher> query_ctid(Integer ctid);
 
     Teacher findById(int tid);
 }

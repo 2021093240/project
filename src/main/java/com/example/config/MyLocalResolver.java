@@ -13,9 +13,9 @@ import java.util.Locale;
 public class MyLocalResolver implements LocaleResolver {
     @Override
     public Locale resolveLocale(HttpServletRequest httpServletRequest) {
-        // 获取⻚⾯⼿动切换传递的语⾔参数language的值
+        // 获取页面手动切换传递的语⾔参数language的值
         String language = httpServletRequest.getParameter("language");
-        // 获取请求头⾃动传递的语⾔参数Accept-Language
+        // 获取请求头自动传递的语⾔参数Accept-Language
         String header = httpServletRequest.getHeader("Accept-Language");
         // Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
         Locale locale = null;

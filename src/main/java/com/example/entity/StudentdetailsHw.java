@@ -1,6 +1,8 @@
 package com.example.entity;
 
 
+import java.io.Serializable;
+
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -8,8 +10,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-
-import java.io.Serializable;
 
 /**
  * (Studentdetails)实体类
@@ -22,7 +22,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @TableName("studentdetails")
-public class Studentdetails implements Serializable {
+public class StudentdetailsHw implements Serializable {
     private static final long serialVersionUID = -37071177888611004L;
 
     @TableId(type = IdType.AUTO)

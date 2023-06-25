@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.mapper.TeacherDao">
+
+    <select id="getTeacherNavMid" resultType="TeacherNavMid">
+        select * from teacher_nav_mid where tid = #{tid}
+    </select>
+
+    <insert id="insertTeacherNavMid">
+        insert into teacher_nav_mid values(#{tid},#{nid});
+    </insert>
+
+    <delete id="deleteNid">
+        delete from teacher_nav_mid where tid = #{tid} and nid = #{nid}
+    </delete>
+
+    <update id="updatePassword">
+        update account set password = #{password},power_id=#{power},modified_time=#{date} where id = #{id}
+    </update>
+
+    <select id="insertTeacherId" resultType="BigInteger">
+        select @@identity
+    </select>
+</mapper>

@@ -15,6 +15,7 @@ import java.util.List;
 public class StudentVO {
 
     private Integer stuId;
+    private Integer classId ;
     private Date date;
     private String datetime ;
     private String sdName;
@@ -23,9 +24,11 @@ public class StudentVO {
     private String sSex ;
     private String sdPhone;
     private String sdAddress;
+    private String className ;
     private String sdHeadimg ;
-    private String status;
+    private Integer status;
+    private String teacherId ;
     private String teacherName;
-    private List<StuParent> teachers ;
+    private List<StuParent> relationship ;
 
 }

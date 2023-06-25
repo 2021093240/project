@@ -1,10 +1,7 @@
 package com.example.controller;
 
-import com.example.entity.Account;
-import com.example.entity.Employee;
-import com.example.entity.Teacher;
+import com.example.entity.*;
 
-import com.example.entity.Teacher_nav_mid;
 import com.example.service.TeacherService;
 import com.example.utils.ResponseResult;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -26,6 +24,9 @@ import java.util.List;
 public class TeachersController {
     @Autowired
     private TeacherService iTeacherService;
+    @Autowired
+    private TeacherService teacherService;
+
     @RequestMapping("findAll")
     public ResponseResult<List<Teacher>> findTeaAll() {
         List<Teacher> all = iTeacherService.findAll();
@@ -56,7 +57,7 @@ public class TeachersController {
         int aid = iTeacherService.insertAccountId();
         teacher.setTeacherName(employee.getName());
         teacher.setCtid(1);
-        teacher.setAccountId(aid);
+        teacher.setAccountId(String.valueOf(aid));
         teacher.setContactWay(employee.getContactWay());
         teacher.setEducation(employee.getEducation());
         iTeacherService.add(teacher);
@@ -73,4 +74,18 @@ public class TeachersController {
         List<Teacher> teachers = iTeacherService.findlikeName(name);
         return ResponseResult.getResponseResult(teachers);
     }
+
+    @RequestMapping("update_power")
+    public ResponseResult<Void> updatePower(Employee employee, HttpSession session){
+
+        System.out.println(employee);
+
+        String username = (String) session.getAttribute("username");
+
+        teacherService.updateTeacher(employee,username);
+
+        return ResponseResult.getResponseResult("修改成功");
+
+    }
+
 }

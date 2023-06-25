@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.ClassManagementHw">
+
+    <resultMap id="classgl" type="com.example.entity.HistoryTableHw2">
+        <id column="stu_id" property="id"></id>
+        <result column="sd_name" property="stname"/>
+        <result column="old_class_id" property="clname"/>
+        <result column="new_class_id" property="addclname"/>
+        <result column="state" property="state"/>
+        <result column="proposer" property="ppname"/>
+        <result column="applyfor_time" property="sqtime"/>
+        <result column="agree_time" property="sptime"/>
+    </resultMap>
+
+    <select id="getClassAll" resultMap="classgl">
+        select e.stu_id,e.sd_name,e.class_name old_class_id,f.class_name new_class_id,e.state,e.proposer,
+               e.applyfor_time,e.agree_time
+            from (select c.stu_id,c.sd_name,d.class_name,c.new_class_id,c.state,
+                c.proposer,c.applyfor_time,c.agree_time
+            from (select a.stu_id,b.sd_name,a.old_class_id,a.new_class_id,
+                a.state,a.proposer,a.applyfor_time,a.agree_time
+            from history_table a join studentdetails b
+                    on a.stu_id=b.sd_id ) c
+                  join class_table d
+                      on c.old_class_id=d.class_id) e
+                  join class_table f
+                    on e.new_class_id=f.class_id;
+    </select>
+
+    <resultMap id="fundAll" type="com.example.entity.RefundHw3">
+        <id column="id" property="id"></id>
+        <result column="stu_id" property="stuId"/>
+        <result column="sd_name" property="sdName"/>
+        <result column="state" property="state"/>
+        <result column="refund_time" property="refundTime"/>
+        <result column="agree_time" property="agreeTime"/>
+    </resultMap>
+
+    <select id="getRefundAll" resultMap="fundAll">
+        select b.id,b.stu_id,a.sd_name,b.state,b.refund_time,b.agree_time from studentdetails a join refund b
+            on a.sd_id = b.stu_id
+    </select>
+
+    <resultMap id="return" type="com.example.entity.ReturnHw1">
+        <id column="sd_id" property="sdId"></id>
+        <result column="sd_name" property="sdName"/>
+        <result column="state" property="state"/>
+    </resultMap>
+
+<!--    查询未退费学生的id-->
+    <select id="getLikeId" resultMap="return">
+        select a.sd_id,a.sd_name,b.state from studentdetails a left join refund b on a.sd_id = b.stu_id
+            and b.state!=0 where a.sd_id like #{id};
+    </select>
+
+    <insert id="addrefund">
+        insert into refund (stu_id,state,refund_time,back01,back02) values (#{id},#{state},#{stime},#{reason},#{sqrid})
+    </insert>
+</mapper>

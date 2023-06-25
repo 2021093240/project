@@ -1,6 +1,8 @@
 package com.example.entity;
 
 
+import java.io.Serializable;
+
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -9,10 +11,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import java.io.Serializable;
+import java.util.Date;
 
 /**
- * (Studentdetails)实体类
+ * (HistoryTable)实体类
  *
  * @author makejava
  * @since 2023-06-17 15:47:27
@@ -21,28 +23,26 @@ import java.io.Serializable;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-@TableName("studentdetails")
-public class Studentdetails implements Serializable {
-    private static final long serialVersionUID = -37071177888611004L;
+@TableName("history_table")
+public class HistoryTableHw implements Serializable {
+    private static final long serialVersionUID = 467554315687235856L;
 
     @TableId(type = IdType.AUTO)
-    private Integer sdId;
-    
-    private String sdName;
-    
-    private Integer sdSex;
-    
-    private Integer sdAge;
-    
-    private String sdAddress;
-    
-    private String sdPhone;
-    
-    private String sdHeadimg;
+    private Integer id;
     
     private Integer stuId;
     
-    private Integer classId;
+    private Integer oldClassId;
+    
+    private Integer newClassId;
+    
+    private Integer state;
+    
+    private Date applyforTime;
+    
+    private Date agreeTime;
+    
+    private Integer proposer;
     
     private String back02;
     
