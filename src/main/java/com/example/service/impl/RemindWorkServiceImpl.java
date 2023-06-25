@@ -17,7 +17,8 @@ public class RemindWorkServiceImpl implements RemindWorkService {
     @Override
     public int addRemindWork(RemindWork remindWork) {
 
-
         return remindWorkMapper.addRemindWork(remindWork);
+
     }
 }
+

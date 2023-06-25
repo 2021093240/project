@@ -23,6 +23,7 @@ public class WorkController extends BaseController{
 
     @PostMapping("/addWork")
     public ResponseResult<Void> addWork(Work work){
+
         workService.addWork(work);
         RemindWork remindWork = new RemindWork();
         remindWork.setRemind("工单提醒");
@@ -91,4 +92,3 @@ public class WorkController extends BaseController{
     }
 
 }
-
