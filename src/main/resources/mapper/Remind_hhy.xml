@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.RemindDao_hhy">
+    <resultMap id="remindResultMapper" type="com.example.entity.Remind_hhy">
+        <id column="rid" property="rid"/>
+<!--        <collection property="students" column="stu_id"  select="com.example.mapper.StudentdetailsDao_hhy.findStudentdetailsByStuId" ofType="com.example.entity.Studentdetails_hhy"/>-->
+    </resultMap>
+    <select id="findAllRemind" resultMap="remindResultMapper">
+<!--        select * from refund-->
+<!--        select remind.rid,remind.stu_id,remind.remind,tt.teacher_name,tt.course_name,tt.course_money,studentdetails.sd_name,refund.back01,refund.state from remind-->
+<!--        inner join (select s.stu_id,s.sd_name,t.teacher_name,c.course_name,c.course_money from studentdetails s,teacher t,course_teacher_class ctc,course c where t.teacher_id=ctc.teacher_id and c.course_id=ctc.course_id and s.ctid=t.ctid) tt on tt.stu_id=remind.stu_id inner join studentdetails on studentdetails.stu_id=remind.stu_id inner join refund on studentdetails.stu_id=refund.stu_id-->
+<!--        order by rid desc-->
+        select remind.rid,remind.stu_id,remind.remind,tt.teacher_name,tt.course_name,tt.course_money from remind
+        left join (select s.stu_id,s.sd_name,t.teacher_name,c.course_name,c.course_money from studentdetails s,teacher t,course_teacher_class ctc,course c,student st where t.teacher_id=ctc.teacher_id and c.course_id=ctc.course_id and st.stu_id=s.stu_id and t.teacher_id=st.tid) tt on tt.stu_id=remind.stu_id inner join studentdetails on studentdetails.stu_id=remind.stu_id inner join refund on studentdetails.stu_id=refund.stu_id
+        order by rid desc
+    </select>
+    <select id="findAllRemindByGO" resultMap="remindResultMapper">
+        select remind.rid,remind.remind,remind.t_id,teacher.teacher_name from remind inner join work on remind.t_id=work.t_id inner join teacher on remind.t_id=teacher.teacher_id order by remind.rid desc
+    </select>
+    <insert id="addRemind">
+        insert into remind(remind,stu_id) values(#{remind},#{stuId})
+    </insert>
+    <delete id="deleteRemind">
+        delete from remind where rid=#{rid}
+    </delete>
+    <select id="findRemindByRid" resultMap="remindResultMapper">
+        select * from remind where rid=#{rid}
+    </select>
+
+</mapper>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.TeacherDao_hhy">
+    <resultMap id="teacherResultMapper" type="com.example.entity.Teacher_hhy">
+        <id column="teacher_id" property="teacherId"/>
+        <collection property="courses" column="teacher_id"  select="com.example.mapper.CourseDao_hhy.findCourseByCtid" ofType="com.example.entity.Course_hhy"/>
+    </resultMap>
+    <select id="findTeacherByCtid" resultMap="teacherResultMapper">
+       select * from teacher where ctid=#{ctid}
+<!--        select * from teacher inner join course_teacher_class on teacher.teacher_id=course_teacher_class.teacher_id inner join course on course_teacher_class.course_id=course.course_id inner join class_table on class_table.class_id=course_teacher_class.class_id where teacher.ctid=#{ctid}-->
+    </select>
+</mapper>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.RefundDao_hhy">
+    <resultMap id="refundResultMapper" type="com.example.entity.Refund_hhy">
+        <id column="id" property="id"/>
+<!--        <collection property="students" column="stu_id"  select="com.example.mapper.StudentdetailsDao_hhy.findStudentdetailsByStuId" ofType="com.example.entity.Studentdetails_hhy"/>-->
+    </resultMap>
+    <select id="findAllRefund" resultMap="refundResultMapper">
+<!--        select * from refund-->
+<!--        select * from refund,studentdetails,teacher,class_table,course where refund.stu_id=studentdetails.stu_id and studentdetails.class_id=class_table.class_id and teacher.teacher_id=studentdetails.ctid and course.ctid=teacher.ctid and refund.state=1-->
+        select * from refund inner join studentdetails on refund.stu_id=studentdetails.stu_id inner join teacher on teacher.teacher_id=studentdetails.ctid inner join course_teacher_class on teacher.teacher_id=course_teacher_class.teacher_id inner join course on
+        course.course_id=course_teacher_class.course_id inner join class_table on class_table.class_id=course_teacher_class.class_id and refund.state=1 order by refund_time desc
+    </select>
+
+    <select id="findAllRefundNew" resultMap="refundResultMapper">
+        select * from refund,studentdetails,teacher,class_table,course where refund.stu_id=studentdetails.stu_id and studentdetails.class_id=class_table.class_id and teacher.ctid=studentdetails.ctid and course.ctid=teacher.ctid ORDER BY refund.id desc limit 1;
+    </select>
+    <delete id="deleteRefundById">
+        delete  from refund where id=#{id}
+    </delete>
+    <select id="findRefundById" resultMap="refundResultMapper">
+        select * from refund where id=#{id}
+    </select>
+    <select id="findRefundBysdName" resultMap="refundResultMapper">
+<!--        select * from refund,studentdetails,teacher,class_table,course-->
+<!--        where refund.stu_id=studentdetails.stu_id and studentdetails.class_id=class_table.class_id and teacher.teacher_id=studentdetails.ctid-->
+<!--        and course.ctid=teacher.ctid and refund.state=1-->
+<!--        and sd_name like concat("%",#{sdName},"%")-->
+        select * from refund,studentdetails,teacher,class_table,course,student
+        where refund.stu_id=studentdetails.stu_id and studentdetails.class_id=class_table.class_id and teacher.teacher_id=student.tid
+        and student.stu_id=studentdetails.stu_id
+        and course.ctid=teacher.ctid and refund.state=1
+        and sd_name like concat("%",#{sdName},"%")
+    </select>
+    <select id="findRefundByteacherName" resultMap="refundResultMapper">
+<!--        select * from refund,studentdetails,teacher,class_table,course-->
+<!--        where refund.stu_id=studentdetails.stu_id and studentdetails.class_id=class_table.class_id and teacher.teacher_id=studentdetails.ctid-->
+<!--        and course.ctid=teacher.ctid and refund.state=1-->
+<!--        and teacher_name like concat("%",#{teacherName},"%")-->
+        select * from refund,studentdetails,teacher,class_table,course,student
+        where refund.stu_id=studentdetails.stu_id and studentdetails.class_id=class_table.class_id and teacher.teacher_id=student.tid
+        and student.stu_id=studentdetails.stu_id
+        and course.ctid=teacher.ctid and refund.state=1
+        and teacher_name like concat("%",#{teacherName},"%")
+    </select>
+    <update id="updateRefund">
+        update refund set state=#{state},agree_time=#{agreeTime} where stu_id=#{stuId}
+    </update>
+</mapper>
